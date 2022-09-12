@@ -1,5 +1,5 @@
 import FinancialsTable from "../../../components/market/financials_table/FinancialsTable"
-import IncomeStatementChart from "../../../components/market/charts/financials_page/IncomeStatementChart"
+import FinancialsPageChart from "../../../components/market/charts/FinancialsPageChart"
 import './StockIncomeStatementPage.scss'
 
 export default function StockIncomeStatementPage(props) {
@@ -7,7 +7,7 @@ export default function StockIncomeStatementPage(props) {
 		<>
             <div className="row mt-2">
                 <div className="col">
-                    <IncomeStatementChart />
+                    <FinancialsPageChart />
                 </div>
             </div>
             <div className="row mt-2">

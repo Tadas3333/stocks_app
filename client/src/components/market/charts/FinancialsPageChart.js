@@ -1,15 +1,16 @@
 import {useEffect, useState, useRef} from 'react'
-import Common from "../../../../data/Common"
-import MarketURL from "../../../../data/MarketURL"
+import Common from "../../../data/Common"
+import MarketURL from "../../../data/MarketURL"
 import ReactEcharts from "echarts-for-react"
-import Colors from "../../../../styles/Colors"
-import './IncomeStatementChart.scss'
+import Colors from "../../../styles/Colors"
+import './FinancialsPageChart.scss'
 
-export default function IncomeStatementChart(props) {
+export default function FinancialsPageChart(props) {
     const [option, setOption] = useState({});
 
     useEffect(() => {
       try {
+            var categories = ["2018", "2019", "2020", "2021", "2022"];
             setOption({
                   animationEasingUpdate: 'cubicOut',
                   legend: {
@@ -28,13 +29,44 @@ export default function IncomeStatementChart(props) {
                     axisPointer: {
                         type: 'shadow',
                         shadowStyle: {
-                            color: "rgba(0, 0, 0, 0.02)"
+                            color: "rgba(0, 0, 0, 0.03)"
                         }
                     },
-                    position: [0, 0]
+                    backgroundColor: 'rgba(0, 0, 0, 0.98)',
+                    borderColor: '#777777',
+                    formatter: function (params) {
+                      var str = [];
+                      str.push("<div class='app-font' style='width: 170px; color: #ffffff; text-align: left;'>");
+                      for (var j = 0; j < params.length; j++){
+                        str.push("<div class='row p-0 m-0'>"); 
+                        str.push("<div class='col-6 p-0 m-0'>" + params[j].marker + " " + params[j].seriesName + ":</div>");
+                        str.push("<div class='col-6 p-0 ps-2 m-0 text-end'>" + Common.prettify_amount(params[j].data) + "</div>");
+                        str.push("</div>");
+                      }
+                      str.push("</div>");
+                      return str.join("");
+                    },
+                    position: function (point, params, dom, rect, size) {
+                      var yLabelsWidth = 41;
+                      var categoryWidth = (size.viewSize[0]-yLabelsWidth)/categories.length;
+                      var currentCategory = params[0].axisValue;
+                      var tooltipPopupWidth = size.contentSize[0];
+                      var tooltipOffset = (categoryWidth/2) - (tooltipPopupWidth/2);
+
+                      var currentCategoryArrayIndex = 0;
+                      var arrLenght = categories.length
+                      for (var i = 0; i < arrLenght; i++) {
+                          if(categories[i] == currentCategory) {
+                            currentCategoryArrayIndex = i;
+                            break;
+                          }
+                      }
+
+                      return {left: categoryWidth * currentCategoryArrayIndex + tooltipOffset, top: -60};
+                    }
                   },
                   grid: {
-                    top: '10px',
+                    top: '10px', // To fit y axis labels
                     left: 0,
                     right: '10px',
                     bottom: '30px', //For legend
@@ -43,7 +75,7 @@ export default function IncomeStatementChart(props) {
                   xAxis: [
                     {
                       type: 'category',
-                      data: ["2018", "2019", "2020", "2021", "2022"]
+                      data: categories
                     }
                   ],
                   yAxis: [
@@ -88,7 +120,7 @@ export default function IncomeStatementChart(props) {
                         }
                       }
                     },
-                  ],
+                  ]
             });
 
       } catch(err) {
@@ -97,7 +129,7 @@ export default function IncomeStatementChart(props) {
     }, [props.tickerSymbol]);
 
 	return (
-        <div className="income-statement-chart mb-3">
+        <div className="financials-page-chart mb-3">
           <ReactEcharts option={option}  style={{height: '100%', width: '100%'}}/>
         </div>
 	);
