@@ -1,0 +1,57 @@
+
+$green-l-color: rgb(229, 243, 233);
+$green-d-color: rgb(29, 136, 46);
+
+$red-l-color: rgb(254, 235, 235);
+$red-d-color: rgb(185, 27, 40);
+
+$blue-color: rgb(0, 119, 238);
+
+$orange-d-color: rgb(213, 88, 43);
+$yellow-color:rgb(238, 191, 51);
+
+$purple-color: rgb(167, 78, 255);
+
+
+$grey-l-color: #f4f4f4;
+$grey-color: #cccccc;
+$grey-d-color: rgb(103, 104, 108);
+
+$white-color: #ffffff;
+$black-color: #000000;
+
+.color-positive {
+    color: $green-d-color;
+}
+
+.background-positive {
+    background-color: $green-l-color;
+}
+
+.color-negative {
+    color: $red-d-color;
+}
+
+.background-negative {
+    background-color: $red-l-color;
+}
+
+.color-focus {
+    color: $blue-color;
+}
+
+.color-white {
+    color: $white-color;
+}
+
+.background-white {
+    background-color: $white-color;
+}
+
+.color-grey {
+    color: $grey-d-color;
+}
+
+.background-grey {
+    background-color: $grey-l-color;
+}

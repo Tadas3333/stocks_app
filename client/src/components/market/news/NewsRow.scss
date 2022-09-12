@@ -1,0 +1,19 @@
+.news-row {
+    border-bottom: 1px solid #cccccc;
+}
+
+.news-row-image {
+    width: 100%;
+    height: 80px;
+    filter: brightness(0.8) saturate(80%);
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.news-row-title {
+    font-weight: 700;
+}
+
+.news-row-details {
+    font-size: 12px;
+}

@@ -1,0 +1,17 @@
+@import "../../styles/Colors.scss";
+
+.data-row {
+    border-bottom: 2px solid $grey-l-color;
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+}
+
+.data-row-label {
+    font-size: 14px;
+}
+
+.data-row-data {
+    text-align: right;
+    font-weight: 600;
+    font-size: 14px;
+}

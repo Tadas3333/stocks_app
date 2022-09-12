@@ -1,0 +1,28 @@
+@import "../styles/Colors.scss";
+
+.stock-market-page-top-ad {
+    width: 100%;
+    height: 320px;
+}
+
+.stock-market-page-navigation a{
+    display: inline-block;
+    text-decoration: none;
+    color: $black-color;
+    padding: 8px 20px 8px 20px;
+    margin-right: 10px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 7px;
+}
+
+.stock-market-page-navigation .active, .stock-market-page-navigation .active:hover {
+    background-color: $blue-color;
+    color: $white-color;
+}
+
+.stock-market-page-navigation a:hover {
+    background-color: $grey-l-color;
+}

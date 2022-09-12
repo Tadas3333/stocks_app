@@ -1,0 +1,20 @@
+@import "../../styles/Colors.scss";
+
+.stock-financials-page-links a {
+    position: relative;
+    display: inline-block;
+    padding: 8px 0 8px 0;
+    text-decoration: none;
+    color: $black-color;
+    font-weight: 600;
+    margin-right: 20px;
+}
+
+.stock-financials-page-links a.active{
+    border-bottom: 3px solid $blue-color;
+}
+
+.stock-financials-page-links a:hover {
+    color: $blue-color;
+}
+

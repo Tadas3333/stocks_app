@@ -1,0 +1,23 @@
+@import "./Colors.scss";
+
+.no-select {
+  -webkit-touch-callout: none;
+    -webkit-user-select: none;
+      -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+}
+
+.section-borders {
+  border: 1px solid $grey-color;
+  border-radius: 7px;
+}
+
+.section-border-bottom {
+  border-bottom: 1px solid $grey-color;
+}
+
+.section-border-top {
+  border-top: 1px solid $grey-color;
+}
