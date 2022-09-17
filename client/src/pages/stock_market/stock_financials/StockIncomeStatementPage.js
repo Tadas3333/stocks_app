@@ -1,4 +1,4 @@
-import FinancialsTable from "../../../components/market/financials_table/FinancialsTable"
+import FinancialsTable from "../../../components/market/financials/FinancialsTable"
 import BarsChartTemplate from "../../../components/market/charts/templates/BarsChartTemplate"
 import './StockIncomeStatementPage.scss'
 

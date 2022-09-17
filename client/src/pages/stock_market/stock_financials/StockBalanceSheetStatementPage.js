@@ -1,4 +1,4 @@
-import FinancialsTable from "../../../components/market/financials_table/FinancialsTable"
+import FinancialsTable from "../../../components/market/financials/FinancialsTable"
 import './StockBalanceSheetStatementPage.scss'
 
 export default function StockBalanceSheetStatementPage(props) {
