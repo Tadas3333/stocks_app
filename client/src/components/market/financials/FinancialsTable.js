@@ -1,13 +1,14 @@
-import {useEffect, useRef} from 'react'
+import {useEffect, useState} from 'react'
 import useFetch from "react-fetch-hook"
 import MarketURL from "../../../data/MarketURL"
 import FinancialsTableRow from "./FinancialsTableRow"
+import BarsChartTemplate from "../charts/templates/BarsChartTemplate"
 import Common from "../../../data/Common"
 import './FinancialsTable.scss'
 
 export default function FinancialsTable(props) {
-    const {data: financials = {"statements": []}} = useFetch(MarketURL.statements(props.data, props.tickerSymbol), {}, [props.tickerSymbol]);
-    const rows = useRef([]);
+    const {data: financials = {"statements": []}} = useFetch(MarketURL.statements(props.data, props.tickerSymbol), {}, [props.data, props.tickerSymbol]);
+    const [rows, setRows] = useState([]);
     
     useEffect(() => {
         try {
@@ -36,7 +37,7 @@ export default function FinancialsTable(props) {
                 );
             }
 
-            rows.current = result;
+            setRows(result);
         }
         catch (error) {
             console.log(error);
@@ -45,7 +46,29 @@ export default function FinancialsTable(props) {
 
 	return (
 		<>
-            {rows.current}
+            <div className="row mt-2">
+                <div className="col">
+                    <BarsChartTemplate 
+                        categories={["2018", "2019", "2020", "2021", "2022"]}
+                        data={
+                        [
+                            {
+                                name: "Revenue",
+                                values: [21461268000, 24578000000, 31536000000, 53823000000, 67166000000]
+                            },
+                            {
+                                name: "Net Income",
+                                values: [-976091000, -862000000, 690000000, 5519000000, 49516000000]
+                            },
+                        ]
+                        }/>
+                </div>
+            </div>
+            <div className="row mt-2">
+                <div className="col">
+                    {rows}
+                </div>
+            </div>
         </>
     );
 }
