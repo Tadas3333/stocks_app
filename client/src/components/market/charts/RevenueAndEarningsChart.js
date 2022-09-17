@@ -1,7 +1,6 @@
-import {useEffect, useState, useRef} from 'react'
+import {useEffect, useState} from 'react'
 import Common from "../../../data/Common"
 import Colors from "../../../styles/Colors"
-import MarketURL from "../../../data/MarketURL"
 import ReactEcharts from "echarts-for-react"
 import './RevenueAndEarningsChart.scss'
 
@@ -38,7 +37,7 @@ export default function RevenueAndEarningsChart(props) {
                       position: 'right',
                       axisLabel: {
                         formatter: function (value) {
-                          return Common.prettify_amount(value);
+                          return Common.prettifyAmount(value);
                         }
                       },
                       splitLine: {
@@ -110,7 +109,9 @@ export default function RevenueAndEarningsChart(props) {
 
 	return (
         <div className="revenue-and-earnings-chart-container mb-3">
-          <ReactEcharts option={option}  style={{height: '100%', width: '100%'}}/>
+          <ReactEcharts option={option}  
+                        style={{height: '100%', width: '100%'}}
+                        opts={{renderer: 'svg'}}/>
         </div>
 	);
 }

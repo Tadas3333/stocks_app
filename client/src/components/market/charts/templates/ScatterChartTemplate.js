@@ -73,7 +73,10 @@ export default function ScatterChartTemplate(props) {
 
 	return (
         <div className="scatter-chart-template mb-3">
-          <ReactEcharts option={option} style={{height: '100%', width: '100%'}}/>
+          <ReactEcharts option={option} 
+                        style={{height: '100%', width: '100%'}}
+                        opts={{renderer: 'svg'}}
+                        />
         </div>
 	);
 }

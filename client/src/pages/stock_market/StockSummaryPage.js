@@ -15,7 +15,7 @@ export default function StockSummaryPage(props) {
 				<div className="col-9">
 					<div className="row mt-2">
 						<DataRow layout="col-6" label="Last Close" data={Common.nvl(props.companyOverviewData["lastClose"], "-")} />
-						<DataRow layout="col-6" label="Market Cap" data={Common.prettify_amount(props.companyOverviewData["marketCap"], null, "-")} />
+						<DataRow layout="col-6" label="Market Cap" data={Common.prettifyAmount(props.companyOverviewData["marketCap"], null, "-")} />
 						<DataRow layout="col-6" label="Open" data={Common.nvl(props.companyOverviewData["openPrice"], "-")} />
 						<DataRow layout="col-6" label="P/S Ratio (TTM)" data={Common.nvl(props.companyOverviewData["priceToSalesRatio"], "-")} />
 						<DataRow layout="col-6" label="Day's Low" data={Common.nvl(props.companyOverviewData["dayRangeLow"], "-")} />

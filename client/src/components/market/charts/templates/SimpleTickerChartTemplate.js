@@ -129,7 +129,7 @@ export default function SimpleTickerChartTemplate(props) {
                       }
 
                       var vol = volumeSeries.data;
-                      vol = Common.prettify_amount(vol);
+                      vol = Common.prettifyAmount(vol);
 
                       str.push("<span style='color: #ffffff; font-weight: 700; padding-right: 3px;' class='app-font'>" + crncy + " " + currentPrice.toFixed(2) + "</span>");
                       str.push(" <span style='font-weight: 700;' class='app-font " + color + "'>" + s + diff.toFixed(2) + "<span style='padding-left: 6px; padding-right: 3px;'>" + s + perc.toFixed(2) + "%</span></span>");
@@ -314,7 +314,10 @@ export default function SimpleTickerChartTemplate(props) {
 
 	return (
         <div className="simple-ticker-chart-template">
-          <ReactEcharts option={option} style={{height: '100%', width: '100%'}}/>
+          <ReactEcharts option={option} 
+                        style={{height: '100%', width: '100%'}}
+                        opts={{renderer: 'svg'}}
+                        />
         </div>
 	);
 }

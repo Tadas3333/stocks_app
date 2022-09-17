@@ -1,28 +1,60 @@
 export default class Common {
-    static nvl(valueToCheck, valueIfUndefined) {
-        if(valueToCheck) {
-            return valueToCheck;
+    static isNull(value) {
+        if(typeof value === 'undefined' || (!value && value !== 0)) {
+            return true;
         }
-        return valueIfUndefined;
+        return false;
     }
 
-    static prettify_amount(value, currency=null, ifNull="") {
-        if(value) {
+    static nvl(valueToCheck, valueIfNull) {
+        if(!Common.isNull(valueToCheck)) {
+            return valueToCheck;
+        }
+        return valueIfNull;
+    }
+
+    static getAmountUnit(value) {
+        if(!Common.isNull(value)) {
             value = Number(value);
             var len = Math.round(value).toString().length;
 
             if(len > 12) {
-                value = parseFloat((value / 1000000000000).toFixed(2)) + "T";
+                return "T";
             }
             else if(len > 9) {
-                value = parseFloat((value / 1000000000).toFixed(2)) + "B";
+                return "B";
             }
             else if(len > 6) {
-                value = parseFloat((value / 1000000).toFixed(2)) + "M";
+                return "M";
             }
             else if(len > 3) {
-                value = parseFloat((value / 1000).toFixed(2)) + "K";
+                return "K";
             }
+    
+        }
+        return "";
+    }
+
+    static prettifyAmount(value, currency=null, ifNull="", unit=null) {
+        if(!Common.isNull(value)) {
+            if(!unit) {
+                unit = Common.getAmountUnit(value);
+            }
+
+            if(unit === "T") {
+                value = parseFloat((value / 1000000000000).toFixed(2));
+            }
+            else if(unit === "B") {
+                value = parseFloat((value / 1000000000).toFixed(2));
+            }
+            else if(unit === "M") {
+                value = parseFloat((value / 1000000).toFixed(2));
+            }
+            else if(unit === "K") {
+                value = parseFloat((value / 1000).toFixed(2));
+            }
+
+            value = value + unit;
     
             if(currency) {
                 return currency + " " + value;
@@ -35,7 +67,7 @@ export default class Common {
     }
 
     static getCurrencySymbol(currency) {
-        if(currency) {
+        if(!Common.isNull(currency)) {
             if(currency === "USD") {
                 return "$";
             }
@@ -46,7 +78,7 @@ export default class Common {
     }
 
     static getPercentageChange(newValue, oldValue) {
-		if(typeof newValue !== 'undefined' && typeof oldValue !== 'undefined') {
+		if(!Common.isNull(newValue) && !Common.isNull(oldValue)) {
 			if(oldValue === 0) return newValue * 100
 
 			return (newValue - oldValue) / oldValue * 100

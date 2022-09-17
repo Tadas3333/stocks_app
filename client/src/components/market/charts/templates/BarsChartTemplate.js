@@ -1,25 +1,82 @@
-import {useEffect, useState} from 'react'
+import {useEffect, useRef} from 'react'
 import Common from "../../../../data/Common"
 import ReactEcharts from "echarts-for-react"
 import Colors from "../../../../styles/Colors"
+import CommonStyles from "../../../../styles/CommonStyles"
 import './BarsChartTemplate.scss'
 
 export default function BarsChartTemplate(props) {
-    const [option, setOption] = useState({});
+    const option = useRef({});
 
     useEffect(() => {
       try {
-            var categories = ["2018", "2019", "2020", "2021", "2022"];
-            setOption({
+            var categories = [];
+            var data = [];
+            var colors = [
+              Colors.getBlueChartColor(),
+              Colors.getYellowChartColor()
+            ]
+
+            if(!Common.isNull(props.categories)){
+              categories = props.categories;
+            }
+
+            if(!Common.isNull(props.data)){
+              data = props.data;
+            }
+            
+            var dataSeries = [];
+            var arrLength = data.length;
+            var valuesArrLength;
+            var maxValue = null;
+
+            for(var i=0; i < arrLength; i++){
+              valuesArrLength = data[i].values.length;
+              // Find the max value in received data
+              for(var x=0; x < valuesArrLength; x++) {
+                if(Common.isNull(maxValue)) {
+                  maxValue = data[i].values[x];
+                } else if(maxValue < data[i].values[x]) {
+                  maxValue = data[i].values[x];
+                }
+              }
+              
+              // Create series for a chart from received data
+              dataSeries.push(
+                {
+                  name: data[i].name,
+                  type: 'bar',
+                  data: data[i].values,
+                  itemStyle: {
+                    normal: {
+                        barBorderRadius: [5, 5, 0 ,0 ],
+                        color: colors[i]
+                    }
+                  },
+                  cursor: 'default'
+                }
+              );
+            }
+
+            if(Common.isNull(maxValue)) {
+              maxValue = 0;
+            }
+
+            // Get a value unit for formatting Y axis labels
+            var valueUnit = Common.getAmountUnit(maxValue);
+
+            option.current = {
                   animationEasingUpdate: 'cubicOut',
                   legend: {
                     bottom: 0,
                     left: 0,
                     align: 'left',
                     itemWidth: 14,
-                    itemHeight: 10,
-                    formatter: function (name) {
-                      return <><span class='app-font'>{name}</span></>;
+                    itemHeight: 8,
+                    textStyle: {
+                      color: '#000000',
+                      fontWeight: '500',
+                      fontFamily: CommonStyles.getAppFontFamily()
                     }
                   },
                   tooltip: {
@@ -28,7 +85,7 @@ export default function BarsChartTemplate(props) {
                     axisPointer: {
                         type: 'shadow',
                         shadowStyle: {
-                            color: "rgba(0, 0, 0, 0.03)"
+                            color: "rgba(0, 40, 80, 0.03)"
                         }
                     },
                     backgroundColor: 'rgba(0, 0, 0, 0.98)',
@@ -39,7 +96,7 @@ export default function BarsChartTemplate(props) {
                       for (var j = 0; j < params.length; j++){
                         str.push("<div class='row p-0 m-0'>"); 
                         str.push("<div class='col-6 p-0 m-0'>" + params[j].marker + " " + params[j].seriesName + ":</div>");
-                        str.push("<div class='col-6 p-0 ps-2 m-0 text-end'>" + Common.prettify_amount(params[j].data) + "</div>");
+                        str.push("<div class='col-6 p-0 ps-2 m-0 text-end'>" + Common.prettifyAmount(params[j].data) + "</div>");
                         str.push("</div>");
                       }
                       str.push("</div>");
@@ -62,7 +119,7 @@ export default function BarsChartTemplate(props) {
                           }
                       }
 
-                      return {left: categoryWidth * currentCategoryArrayIndex + tooltipOffset, top: -30};
+                      return {left: categoryWidth * currentCategoryArrayIndex + tooltipOffset, top: -62};
                     }
                   },
                   grid: {
@@ -75,7 +132,18 @@ export default function BarsChartTemplate(props) {
                   xAxis: [
                     {
                       type: 'category',
-                      data: categories
+                      data: categories,
+                      axisLabel: {
+                        color: '#000000',
+                        fontFamily: CommonStyles.getAppFontFamily(),
+                        fontWeight: '500'
+                      },
+                      axisTick: {
+                        show: false
+                      },
+                      axisLine: {
+                        show: false
+                      }
                     }
                   ],
                   yAxis: [
@@ -84,8 +152,11 @@ export default function BarsChartTemplate(props) {
                       position: 'right',
                       splitNumber: 4,
                       axisLabel: {
+                        color: '#000000',
+                        fontFamily: CommonStyles.getAppFontFamily(),
+                        fontWeight: '500',
                         formatter: function (value) {
-                          return Common.prettify_amount(value);
+                          return Common.prettifyAmount(value, null, "", valueUnit);
                         }
                       },
                       splitLine: {
@@ -96,43 +167,20 @@ export default function BarsChartTemplate(props) {
                       },
                     }
                   ],
-                  series: [
-                    {
-                      name: 'Revenue',
-                      type: 'bar',
-                      data: [21461268000, 24578000000, 31536000000, 53823000000, 67166000000],
-                      itemStyle: {
-                        normal: {
-                            barBorderRadius: [5, 5, 0 ,0 ],
-                            color: Colors.getBlueChartColor()
-                        }
-                      }
-                    },
-                    {
-                      name: 'Net Income',
-                      type: 'bar',
-                      data: [-976091000, -862000000, 690000000, 5519000000, 49516000000],
-                      itemStyle: {
-                        
-                        normal: {
-                          barBorderRadius: [5, 5, 0 ,0 ],
-                          color: Colors.getYellowChartColor()
-                        }
-                      }
-                    },
-                  ]
-            });
+                  series: dataSeries
+            };
 
       } catch(err) {
         console.log(err);
       }
-    }, [props.tickerSymbol]);
+    }, [props.categories, props.data]);
 
 	return (
         <div className="bars-chart-template mb-3">
-          <ReactEcharts option={option} 
+          <ReactEcharts option={option.current} 
                         style={{height: '100%', width: '100%'}} 
                         className="app-font"
+                        opts={{renderer: 'svg'}}
                         />
         </div>
 	);

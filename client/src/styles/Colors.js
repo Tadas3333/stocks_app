@@ -7,7 +7,7 @@ export default class Colors {
     static orangeChartColor = "225, 93, 45";
     static yellowChartColor = "238, 191, 51";
     static purpleChartColor = "167, 78, 255";
-    static lightGreyChartColor = "240, 240, 240";
+    static lightGreyChartColor = "243, 243, 243";
 
     static getBlueChartColor(opacity=1) {
         return Colors.getColor(Colors.blueChartColor, opacity);
