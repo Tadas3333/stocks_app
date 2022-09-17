@@ -1,11 +1,9 @@
-import {useEffect, useState, useRef} from 'react'
-import Common from "../../../data/Common"
-import Colors from "../../../styles/Colors"
-import MarketURL from "../../../data/MarketURL"
+import {useEffect, useState} from 'react'
+import Colors from "../../../../styles/Colors"
 import ReactEcharts from "echarts-for-react"
-import './EarningsBeatChart.scss'
+import './ScatterChartTemplate.scss'
 
-export default function EarningsBeatChart(props) {
+export default function ScatterChartTemplate(props) {
     const [option, setOption] = useState({});
 
     useEffect(() => {
@@ -74,7 +72,7 @@ export default function EarningsBeatChart(props) {
     }, [props.tickerSymbol]);
 
 	return (
-        <div className="earnings-beat-earnings-chart-container mb-3">
+        <div className="scatter-chart-template mb-3">
           <ReactEcharts option={option} style={{height: '100%', width: '100%'}}/>
         </div>
 	);

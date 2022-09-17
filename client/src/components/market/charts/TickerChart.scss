@@ -1,5 +1,34 @@
-.ticker-chart-container {
+@import "../../../styles/Colors.scss";
+
+.ticker-chart-navigation {
     position: relative;
-    width: 100%;
-    height: 200px;
+    z-index: 0;
+}
+
+.ticker-chart-navigation-button {
+    padding: 5px 0px 5px 0px;
+    width: 40px;
+    text-align: center;
+    display: inline-block;
+    position: relative;
+    text-decoration: none;
+    color: #000000;
+    font-weight: 700;
+    font-size: 13px;
+    z-index: 2;
+    transition: all 0.1s ease-in;
+    border-bottom: 3px solid $white-color;
+}
+
+.ticker-chart-navigation-button:hover {
+    background-color: $grey-l-color;
+}
+
+.ticker-chart-navigation-button-active {
+    color: $blue-color;
+    border-bottom: 3px solid $blue-color;
+}
+
+.ticker-chart-navigation-button:hover {
+    cursor: pointer;
 }

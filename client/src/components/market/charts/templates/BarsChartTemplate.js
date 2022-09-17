@@ -1,11 +1,10 @@
-import {useEffect, useState, useRef} from 'react'
-import Common from "../../../data/Common"
-import MarketURL from "../../../data/MarketURL"
+import {useEffect, useState} from 'react'
+import Common from "../../../../data/Common"
 import ReactEcharts from "echarts-for-react"
-import Colors from "../../../styles/Colors"
-import './FinancialsPageChart.scss'
+import Colors from "../../../../styles/Colors"
+import './BarsChartTemplate.scss'
 
-export default function FinancialsPageChart(props) {
+export default function BarsChartTemplate(props) {
     const [option, setOption] = useState({});
 
     useEffect(() => {
@@ -19,8 +18,8 @@ export default function FinancialsPageChart(props) {
                     align: 'left',
                     itemWidth: 14,
                     itemHeight: 10,
-                    textStyle: {
-                      fontSize: 10
+                    formatter: function (name) {
+                      return <><span class='app-font'>{name}</span></>;
                     }
                   },
                   tooltip: {
@@ -44,6 +43,7 @@ export default function FinancialsPageChart(props) {
                         str.push("</div>");
                       }
                       str.push("</div>");
+                      str.push("<div class='bars-chart-template-arrow-down'></div>");
                       return str.join("");
                     },
                     position: function (point, params, dom, rect, size) {
@@ -56,13 +56,13 @@ export default function FinancialsPageChart(props) {
                       var currentCategoryArrayIndex = 0;
                       var arrLenght = categories.length
                       for (var i = 0; i < arrLenght; i++) {
-                          if(categories[i] == currentCategory) {
+                          if(categories[i] === currentCategory) {
                             currentCategoryArrayIndex = i;
                             break;
                           }
                       }
 
-                      return {left: categoryWidth * currentCategoryArrayIndex + tooltipOffset, top: -60};
+                      return {left: categoryWidth * currentCategoryArrayIndex + tooltipOffset, top: -30};
                     }
                   },
                   grid: {
@@ -129,8 +129,11 @@ export default function FinancialsPageChart(props) {
     }, [props.tickerSymbol]);
 
 	return (
-        <div className="financials-page-chart mb-3">
-          <ReactEcharts option={option}  style={{height: '100%', width: '100%'}}/>
+        <div className="bars-chart-template mb-3">
+          <ReactEcharts option={option} 
+                        style={{height: '100%', width: '100%'}} 
+                        className="app-font"
+                        />
         </div>
 	);
 }

@@ -10,7 +10,7 @@ import MarketURL from "../data/MarketURL"
 import StockSummaryPage from "./stock_market/StockSummaryPage"
 import StockAnalysisPage from "./stock_market/StockAnalysisPage"
 import StockFinancialsPage from "./stock_market/StockFinancialsPage"
-import ChartController from "../components/market/charts/ChartController"
+import TickerChart from "../components/market/charts/TickerChart"
 import './StockMarketPage.scss'
 
 export default function StockMarket() {
@@ -42,7 +42,7 @@ export default function StockMarket() {
 								<LiveTickerDataSection tickerSymbol={tickerSymbol} companyOverviewData={companyOverviewData}/>
 							</div>
 							<div className="col-8">
-								<ChartController tickerSymbol={tickerSymbol} currency={companyOverviewData["currency"]}/>
+								<TickerChart tickerSymbol={tickerSymbol} currency={companyOverviewData["currency"]}/>
 							</div>
 						</div>
 					</div>

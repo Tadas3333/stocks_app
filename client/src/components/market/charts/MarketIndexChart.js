@@ -1,5 +1,4 @@
-import {useEffect, useState, useRef} from 'react'
-import Common from "../../../data/Common"
+import {useEffect, useState} from 'react'
 import Colors from "../../../styles/Colors"
 import MarketURL from "../../../data/MarketURL"
 import ReactEcharts from "echarts-for-react"

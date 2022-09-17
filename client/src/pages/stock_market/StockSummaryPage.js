@@ -4,7 +4,7 @@ import DataCol from "../../components/data_visuals/DataCol"
 import DataRow from "../../components/data_visuals/DataRow"
 import NewsContainer from "../../components/market/news/NewsContainer"
 import RevenueAndEarningsChart from "../../components/market/charts/RevenueAndEarningsChart"
-import EarningsBeatChart from "../../components/market/charts/EarningsBeatChart"
+import ScatterChartTemplate from "../../components/market/charts/templates/ScatterChartTemplate"
 import Common from "../../data/Common"
 import './StockSummaryPage.scss'
 
@@ -67,7 +67,7 @@ export default function StockSummaryPage(props) {
 					<div className="row">
 						<div className="col">
 							<SectionTitle title="Earnings" />
-							<EarningsBeatChart tickerSymbol={props.tickerSymbol} />
+							<ScatterChartTemplate tickerSymbol={props.tickerSymbol} />
 						</div>
 					</div>
 				</div>
