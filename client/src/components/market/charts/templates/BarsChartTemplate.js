@@ -125,7 +125,7 @@ export default function BarsChartTemplate(props) {
                   grid: {
                     top: '10px', // To fit y axis labels
                     left: 0,
-                    right: '10px',
+                    right: '-20px',
                     bottom: '30px', //For legend
                     containLabel: true
                   },
@@ -155,6 +155,8 @@ export default function BarsChartTemplate(props) {
                         color: '#000000',
                         fontFamily: CommonStyles.getAppFontFamily(),
                         fontWeight: '500',
+                        align: 'right',
+                        margin: 45,
                         formatter: function (value) {
                           return Common.prettifyAmount(value, null, "", valueUnit);
                         }
