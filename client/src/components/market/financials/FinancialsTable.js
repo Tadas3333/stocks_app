@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react'
+import {useEffect, useState, useRef} from 'react'
 import useFetch from "react-fetch-hook"
 import MarketURL from "../../../data/MarketURL"
 import FinancialsTableRow from "./FinancialsTableRow"
@@ -9,6 +9,8 @@ import './FinancialsTable.scss'
 export default function FinancialsTable(props) {
     const {data: financials = {"statements": []}} = useFetch(MarketURL.statements(props.data, props.tickerSymbol), {}, [props.data, props.tickerSymbol]);
     const [rows, setRows] = useState([]);
+    const chartCategories = useRef([]);
+    const chartData = useRef([]);
     
     useEffect(() => {
         try {
@@ -19,17 +21,50 @@ export default function FinancialsTable(props) {
             var col3 = "";
             var col4 = "";
             var col5 = "";
+            var chartValues = [];
+            var keysToDisplayInChart = [];
+            
+            if(props.data) {
+                if(props.data === "INCOME_STATEMENT") {
+                    keysToDisplayInChart = ["Revenue", "Net Income"];
+                } else if(props.data === "BALANCE_SHEET_STATEMENT") {
+                    keysToDisplayInChart = ["Total Assets", "Total Liabilities"];
+                } else if(props.data === "CASH_FLOW_STATEMENT") {
+                    keysToDisplayInChart = ["Operating Cash Flow", "Investing Cash Flow", "Financing Cash Flow"];
+                }
+            }
+            
+            chartCategories.current = [];
+            chartData.current = [];
+
+
+            for (var x = 0; x < financials["statements"].length; x++) {
+                chartCategories.current.push(financials["statements"][x]["-"]);
+            }
 
             // Get json keys from array index 0
             for(var key in financials["statements"][0]) {
+                chartValues = [];
+
                 for (var i = 0; i < financials["statements"].length; i++) {
-                    val = Common.nvl(financials["statements"][i][key], "-");
+                    val = financials["statements"][i][key];
+                    chartValues.push(Common.nvl(val, 0));
+                    val = Common.nvl(val, "-");
 
                     if(i === 0) col1 = val;
                     else if(i === 1) col2 = val;
                     else if(i === 2) col3 = val;
                     else if(i === 3) col4 = val;
                     else  col5 = val;
+                }
+
+                if(keysToDisplayInChart.includes(key)) {
+                    chartData.current.push(
+                        {
+                            name: key,
+                            values: chartValues
+                        }
+                    );
                 }
 
                 result.push(
@@ -42,26 +77,15 @@ export default function FinancialsTable(props) {
         catch (error) {
             console.log(error);
         }
-    }, [financials]);
+    }, [financials, props.data]);
 
 	return (
 		<>
             <div className="row mt-2">
                 <div className="col">
                     <BarsChartTemplate 
-                        categories={["2018", "2019", "2020", "2021", "2022"]}
-                        data={
-                        [
-                            {
-                                name: "Revenue",
-                                values: [21461268000, 24578000000, 31536000000, 53823000000, 67166000000]
-                            },
-                            {
-                                name: "Net Income",
-                                values: [-976091000, -862000000, 690000000, 5519000000, 49516000000]
-                            },
-                        ]
-                        }/>
+                        categories={chartCategories.current}
+                        data={chartData.current}/>
                 </div>
             </div>
             <div className="row mt-2">

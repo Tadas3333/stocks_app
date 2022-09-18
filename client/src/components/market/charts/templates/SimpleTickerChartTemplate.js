@@ -316,6 +316,7 @@ export default function SimpleTickerChartTemplate(props) {
         <div className="simple-ticker-chart-template">
           <ReactEcharts option={option} 
                         style={{height: '100%', width: '100%'}}
+                        notMerge={true}
                         opts={{renderer: 'svg'}}
                         />
         </div>

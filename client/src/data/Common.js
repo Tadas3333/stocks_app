@@ -16,6 +16,11 @@ export default class Common {
     static getAmountUnit(value) {
         if(!Common.isNull(value)) {
             value = Number(value);
+
+            if(value < 0) {
+                value = value * -1;
+            }
+
             var len = Math.round(value).toString().length;
 
             if(len > 12) {

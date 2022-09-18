@@ -1,4 +1,4 @@
-import {useEffect, useRef} from 'react'
+import {useEffect, useState} from 'react'
 import Common from "../../../../data/Common"
 import ReactEcharts from "echarts-for-react"
 import Colors from "../../../../styles/Colors"
@@ -6,7 +6,7 @@ import CommonStyles from "../../../../styles/CommonStyles"
 import './BarsChartTemplate.scss'
 
 export default function BarsChartTemplate(props) {
-    const option = useRef({});
+    const [option, setOption] = useState({});
 
     useEffect(() => {
       try {
@@ -14,7 +14,8 @@ export default function BarsChartTemplate(props) {
             var data = [];
             var colors = [
               Colors.getBlueChartColor(),
-              Colors.getYellowChartColor()
+              Colors.getYellowChartColor(),
+              Colors.getPurpleChartColor()
             ]
 
             if(!Common.isNull(props.categories)){
@@ -47,9 +48,10 @@ export default function BarsChartTemplate(props) {
                   name: data[i].name,
                   type: 'bar',
                   data: data[i].values,
+                  barMaxWidth: 50,
                   itemStyle: {
                     normal: {
-                        barBorderRadius: [5, 5, 0 ,0 ],
+                        barBorderRadius: 3,
                         color: colors[i]
                     }
                   },
@@ -58,6 +60,8 @@ export default function BarsChartTemplate(props) {
               );
             }
 
+            var seriesCount = dataSeries.length;
+
             if(Common.isNull(maxValue)) {
               maxValue = 0;
             }
@@ -65,7 +69,7 @@ export default function BarsChartTemplate(props) {
             // Get a value unit for formatting Y axis labels
             var valueUnit = Common.getAmountUnit(maxValue);
 
-            option.current = {
+            setOption({
                   animationEasingUpdate: 'cubicOut',
                   legend: {
                     bottom: 0,
@@ -92,7 +96,7 @@ export default function BarsChartTemplate(props) {
                     borderColor: '#777777',
                     formatter: function (params) {
                       var str = [];
-                      str.push("<div class='app-font' style='width: 170px; color: #ffffff; text-align: left;'>");
+                      str.push("<div class='app-font' style='color: #ffffff; text-align: left;'>");
                       for (var j = 0; j < params.length; j++){
                         str.push("<div class='row p-0 m-0'>"); 
                         str.push("<div class='col-6 p-0 m-0'>" + params[j].marker + " " + params[j].seriesName + ":</div>");
@@ -104,7 +108,7 @@ export default function BarsChartTemplate(props) {
                       return str.join("");
                     },
                     position: function (point, params, dom, rect, size) {
-                      var yLabelsWidth = 41;
+                      var yLabelsWidth = 55;
                       var categoryWidth = (size.viewSize[0]-yLabelsWidth)/categories.length;
                       var currentCategory = params[0].axisValue;
                       var tooltipPopupWidth = size.contentSize[0];
@@ -119,7 +123,8 @@ export default function BarsChartTemplate(props) {
                           }
                       }
 
-                      return {left: categoryWidth * currentCategoryArrayIndex + tooltipOffset, top: -62};
+                      return {left: categoryWidth * currentCategoryArrayIndex + tooltipOffset, 
+                              top: (22 + (seriesCount * 20)) * -1}; 
                     }
                   },
                   grid: {
@@ -139,10 +144,14 @@ export default function BarsChartTemplate(props) {
                         fontWeight: '500'
                       },
                       axisTick: {
-                        show: false
+                        lineStyle: {
+                          color: '#000000'
+                        }
                       },
                       axisLine: {
-                        show: false
+                        lineStyle: {
+                          color: '#000000'
+                        }                        
                       }
                     }
                   ],
@@ -170,7 +179,7 @@ export default function BarsChartTemplate(props) {
                     }
                   ],
                   series: dataSeries
-            };
+            });
 
       } catch(err) {
         console.log(err);
@@ -179,9 +188,9 @@ export default function BarsChartTemplate(props) {
 
 	return (
         <div className="bars-chart-template mb-3">
-          <ReactEcharts option={option.current} 
+          <ReactEcharts option={option}
                         style={{height: '100%', width: '100%'}} 
-                        className="app-font"
+                        notMerge={true}
                         opts={{renderer: 'svg'}}
                         />
         </div>

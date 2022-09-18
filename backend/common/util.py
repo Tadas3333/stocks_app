@@ -23,14 +23,6 @@ class Util:
 		
 		return None
 
-	#53823000000 -> 53,823,000
-	def to_thousands(value:str)->str:
-		if value is not None:
-			value = int(float(value) / 1000)
-			value = '{:,}'.format(value)
-			return value
-		return ""
-
     #0.7899434381 -> 0.79
 	def two_decimal_float(value:str)->str:
 		if value is not None:
