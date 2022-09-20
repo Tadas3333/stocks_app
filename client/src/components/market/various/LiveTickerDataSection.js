@@ -4,7 +4,7 @@ import Common from "../../../data/Common"
 import './LiveTickerDataSection.scss'
 
 export default function LiveTickerDataSection(props) {
-    if(!props.companyOverviewData["price"]) {
+    if(Common.isNull(props.companyOverviewData["price"])) {
         return (<></>);
     }
 

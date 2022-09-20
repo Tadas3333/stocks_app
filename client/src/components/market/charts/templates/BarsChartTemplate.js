@@ -114,27 +114,32 @@ export default function BarsChartTemplate(props) {
                       return str.join("");
                     },
                     position: function (point, params, dom, rect, size) {
-                      var fill;
-                      var fillOpacity;
-                      var bBox;
+                      try {
+                        var fill;
+                        var fillOpacity;
+                        var bBox;
 
-                      $('.bars-chart-template svg g path').each(function(i, obj) {
-                        fill = $(obj).attr('fill');
-                        fillOpacity = $(obj).attr('fill-opacity');
-                        
-                        //Temporary solution
-                        //It is a very bad solution, but for now I couldn't find a way to do find
-                        //highlighted chart coordinates natively with current Echarts version
-                        if(fill === "rgb(0,40,80)" && fillOpacity === "0.03") {
-                          bBox = $(obj)[0].getBBox();
+                        $('.bars-chart-template svg g path').each(function(i, obj) {
+                          fill = $(obj).attr('fill');
+                          fillOpacity = $(obj).attr('fill-opacity');
+                          
+                          //Temporary solution
+                          //It is a very bad solution, but for now I couldn't find a way to do find
+                          //highlighted chart coordinates natively with current Echarts version
+                          if(fill === "rgb(0,40,80)" && fillOpacity === "0.03") {
+                            bBox = $(obj)[0].getBBox();
+                          }
+                        });
+
+                        var tooltipPopupWidth = size.contentSize[0];
+
+                        if(typeof(bBox) !== "undefined") {
+                          tooltipOffset.current = bBox.x + (bBox.width/2) - (tooltipPopupWidth/2);
+                        } else {
+                          tooltipOffset.current = null;
                         }
-                      });
-
-                      var tooltipPopupWidth = size.contentSize[0];
-
-                      if(typeof(bBox) !== "undefined") {
-                        tooltipOffset.current = bBox.x + (bBox.width/2) - (tooltipPopupWidth/2);
-                      } else {
+                      } catch(err) {
+                        console.log(err);
                         tooltipOffset.current = null;
                       }
 

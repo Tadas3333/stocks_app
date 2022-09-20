@@ -1,7 +1,8 @@
 import './PageTopTickerName.scss'
+import Common from '../../../data/Common'
 
 export default function PageTopTickerName(props) {
-	if(!props.companyOverviewData["name"] || !props.tickerSymbol) {
+	if(Common.isNull(props.companyOverviewData["name"]) || Common.isNull(props.tickerSymbol)) {
 		return (<></>); //Loading
 	}
 
