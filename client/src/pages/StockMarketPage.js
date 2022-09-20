@@ -28,32 +28,34 @@ export default function StockMarket() {
 					</div>
 				</div>
 			</div>
-			<div className="container">
-				<div className="row mt-4">
-					<div className="col">
-						<PageTopTickerName tickerSymbol={tickerSymbol} companyOverviewData={companyOverviewData}/>
-					</div>
-				</div>
-									
-				<div className="row">
-					<div className="col-9">
-						<div className="row mt-4">
-							<div className="col-4">
-								<LiveTickerDataSection tickerSymbol={tickerSymbol} companyOverviewData={companyOverviewData}/>
-							</div>
-							<div className="col-8">
-								<TickerChart tickerSymbol={tickerSymbol} currency={companyOverviewData["currency"]}/>
-							</div>
+
+			<div className="container-fluid py-4">
+				<div className="container pb-5">
+					<div className="row">
+						<div className="col">
+							<PageTopTickerName tickerSymbol={tickerSymbol} companyOverviewData={companyOverviewData}/>
 						</div>
 					</div>
-					<div className="col-3">
-						<img src="/ad.jpg" alt="Ad" className="stock-market-page-top-ad"></img>
+										
+					<div className="row">
+						<div className="col-9">
+							<div className="row mt-4">
+								<div className="col-4">
+									<LiveTickerDataSection tickerSymbol={tickerSymbol} companyOverviewData={companyOverviewData}/>
+								</div>
+								<div className="col-8">
+									<TickerChart tickerSymbol={tickerSymbol} currency={companyOverviewData["currency"]}/>
+								</div>
+							</div>
+						</div>
+						<div className="col-3">
+							<img src="/ad.jpg" alt="Ad" className="stock-market-page-top-ad"></img>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div className="container-fluid section-border-top section-border-bottom mt-3">
-				<div className="container">
-					<div className="row">
+
+				<div className="container py-3">
+					<div className="row section-border-bottom pb-3">
 						<div className="col">
 							<div className="stock-market-page-navigation">
 								<NavLink to="summary">
@@ -62,7 +64,7 @@ export default function StockMarket() {
 
 								<NavLink to="analysis">
 									<FontAwesomeIcon icon={faListCheck}/><span className="ps-2">Analysis</span>
-								</NavLink>
+								</NavLink> 
 
 								<NavLink to="forecast">
 									<FontAwesomeIcon icon={faArrowTrendUp}/><span className="ps-2">Forecast</span>
@@ -78,16 +80,17 @@ export default function StockMarket() {
 							</div>
 						</div>
 					</div>
+					<div className="row pt-3">
+						<div className="col">
+							<Routes>
+								<Route path="summary" element={<StockSummaryPage tickerSymbol={tickerSymbol} companyOverviewData={companyOverviewData} />} />
+								<Route path="analysis" element={<StockAnalysisPage />} />
+								<Route path="financials/*" element={<StockFinancialsPage tickerSymbol={tickerSymbol} />} />
+								<Route path="*" element={<Navigate replace to="/404"/>} />
+							</Routes>
+						</div>
+					</div>
 				</div>
-			</div>
-
-			<div className="container py-4">
-				<Routes>
-					<Route path="summary" element={<StockSummaryPage tickerSymbol={tickerSymbol} companyOverviewData={companyOverviewData} />} />
-					<Route path="analysis" element={<StockAnalysisPage />} />
-					<Route path="financials/*" element={<StockFinancialsPage tickerSymbol={tickerSymbol} />} />
-					<Route path="*" element={<Navigate replace to="/404"/>} />
-				</Routes>
 			</div>
 			<Footer />
 		</>

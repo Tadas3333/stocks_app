@@ -1,4 +1,3 @@
-import {useEffect, useState} from 'react'
 import MarketIndexChart from "../charts/MarketIndexChart"
 import './MarketIndex.scss'
 

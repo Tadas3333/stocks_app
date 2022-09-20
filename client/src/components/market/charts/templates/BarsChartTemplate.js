@@ -1,12 +1,15 @@
-import {useEffect, useState} from 'react'
+import {useEffect, useState, useRef} from 'react'
 import Common from "../../../../data/Common"
 import ReactEcharts from "echarts-for-react"
 import Colors from "../../../../styles/Colors"
 import CommonStyles from "../../../../styles/CommonStyles"
+import $ from 'jquery';
 import './BarsChartTemplate.scss'
+
 
 export default function BarsChartTemplate(props) {
     const [option, setOption] = useState({});
+    const tooltipOffset = useRef(0);
 
     useEffect(() => {
       try {
@@ -87,13 +90,16 @@ export default function BarsChartTemplate(props) {
                     show:true,
                     trigger: 'axis',
                     axisPointer: {
+                        animation: false,
                         type: 'shadow',
                         shadowStyle: {
+                            //Don't change this, because it is used in position algorithm
                             color: "rgba(0, 40, 80, 0.03)"
                         }
                     },
                     backgroundColor: 'rgba(0, 0, 0, 0.98)',
                     borderColor: '#777777',
+                    transitionDuration: 0,
                     formatter: function (params) {
                       var str = [];
                       str.push("<div class='app-font' style='color: #ffffff; text-align: left;'>");
@@ -108,29 +114,40 @@ export default function BarsChartTemplate(props) {
                       return str.join("");
                     },
                     position: function (point, params, dom, rect, size) {
-                      var yLabelsWidth = 55;
-                      var categoryWidth = (size.viewSize[0]-yLabelsWidth)/categories.length;
-                      var currentCategory = params[0].axisValue;
-                      var tooltipPopupWidth = size.contentSize[0];
-                      var tooltipOffset = (categoryWidth/2) - (tooltipPopupWidth/2);
+                      var fill;
+                      var fillOpacity;
+                      var bBox;
 
-                      var currentCategoryArrayIndex = 0;
-                      var arrLenght = categories.length
-                      for (var i = 0; i < arrLenght; i++) {
-                          if(categories[i] === currentCategory) {
-                            currentCategoryArrayIndex = i;
-                            break;
-                          }
+                      $('.bars-chart-template svg g path').each(function(i, obj) {
+                        fill = $(obj).attr('fill');
+                        fillOpacity = $(obj).attr('fill-opacity');
+                        
+                        //Temporary solution
+                        //It is a very bad solution, but for now I couldn't find a way to do find
+                        //highlighted chart coordinates natively with current Echarts version
+                        if(fill === "rgb(0,40,80)" && fillOpacity === "0.03") {
+                          bBox = $(obj)[0].getBBox();
+                        }
+                      });
+
+                      var tooltipPopupWidth = size.contentSize[0];
+
+                      if(typeof(bBox) !== "undefined") {
+                        tooltipOffset.current = bBox.x + (bBox.width/2) - (tooltipPopupWidth/2);
+                      } else {
+                        tooltipOffset.current = null;
                       }
 
-                      return {left: categoryWidth * currentCategoryArrayIndex + tooltipOffset, 
-                              top: (22 + (seriesCount * 20)) * -1}; 
+                      // Setting -1000000 to not display popup for split second in a wrong position
+                      // This is a workaround needed for temporary tooltip offset solution
+                      return {left: Common.nvl(tooltipOffset.current, -1000000), 
+                              top: (22 + (seriesCount * 20)) * -1};
                     }
                   },
                   grid: {
                     top: '10px', // To fit y axis labels
                     left: 0,
-                    right: '-20px',
+                    right: 0,
                     bottom: '30px', //For legend
                     containLabel: true
                   },
@@ -164,8 +181,6 @@ export default function BarsChartTemplate(props) {
                         color: '#000000',
                         fontFamily: CommonStyles.getAppFontFamily(),
                         fontWeight: '500',
-                        align: 'right',
-                        margin: 45,
                         formatter: function (value) {
                           return Common.prettifyAmount(value, null, "", valueUnit);
                         }
