@@ -2,18 +2,25 @@ import {Routes, Route, useParams, Navigate, NavLink} from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faNewspaper, faListCheck, faFileInvoiceDollar, faUser, faArrowTrendUp } from '@fortawesome/free-solid-svg-icons'
 import useFetch from "react-fetch-hook"
+/*
 import Footer from '../components/Footer';
 import PageTopTickerName from "../components/market/various/PageTopTickerName"
 import LiveTickerDataSection from "../components/market/various/LiveTickerDataSection"
 import MarketIndexes from "../components/market/market_indexes/MarketIndexes"
 import MarketURL from "../data/MarketURL"
-import StockSummaryPage from "./stock_market/StockSummaryPage"
-import StockAnalysisPage from "./stock_market/StockAnalysisPage"
-import StockFinancialsPage from "./stock_market/StockFinancialsPage"
-import TickerChart from "../components/market/charts/TickerChart"
+import StockSummaryPage from "./sub_pages/StockSummaryPage"
+import StockAnalysisPage from "./sub_pages/StockAnalysisPage"
+import StockFinancialsPage from "./sub_pages/StockFinancialsPage"
+import TickerChart from "../components/market/charts/TickerChart"*/
+
+import TickerPageLayout from 'layouts/TickerPageLayout'
 import './StockMarketPage.scss'
 
 export default function StockMarket() {
+	return (
+		<TickerPageLayout />
+	)
+	/*
 	const { tickerSymbol } = useParams();
 	const {data: companyOverviewData = []} = useFetch(MarketURL.companyOverview(tickerSymbol), {}, [tickerSymbol]);
 
@@ -94,5 +101,5 @@ export default function StockMarket() {
 			</div>
 			<Footer />
 		</>
-	);
+	);*/
 }

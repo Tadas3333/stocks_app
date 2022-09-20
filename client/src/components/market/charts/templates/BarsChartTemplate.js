@@ -2,7 +2,7 @@ import {useEffect, useState, useRef} from 'react'
 import Common from "../../../../data/Common"
 import ReactEcharts from "echarts-for-react"
 import Colors from "../../../../styles/Colors"
-import CommonStyles from "../../../../styles/CommonStyles"
+import CommonStyles from "../../../../styles/Main"
 import $ from 'jquery';
 import './BarsChartTemplate.scss'
 
