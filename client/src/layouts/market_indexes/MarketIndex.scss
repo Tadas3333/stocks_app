@@ -1,0 +1,31 @@
+@import "assets/styles/Colors.scss";
+
+.market-index-wrap {
+    line-height: 17px;
+}
+
+.market-index-chart-wrap {
+    position: relative;
+    width: 37px;
+    height: 37px;
+    border-radius: 7px;
+}
+
+.market-index-name {
+    font-weight: 700;
+    font-size: 13px;
+}
+
+.market-index-price {
+    font-size: 13px;
+}
+
+.market-index-percentage-change {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.market-index-price-change {
+    font-size: 13px;
+    font-weight: 600;
+}

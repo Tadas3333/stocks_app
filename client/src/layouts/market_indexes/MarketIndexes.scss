@@ -1,0 +1,17 @@
+@import "assets/styles/Colors.scss";
+
+.market-indexes-category-selector {
+    padding-right: 25px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.market-indexes-category-selector-active {
+    color: $blue-color;
+    border-bottom: 2px solid $blue-color;
+}
+
+.market-indexes-category-selector:hover {
+    color: $blue-color;
+    cursor: pointer;
+}

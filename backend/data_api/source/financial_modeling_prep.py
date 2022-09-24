@@ -1,6 +1,7 @@
 import requests
 import json
 from datetime import datetime
+from common.util import Util
 
 class FinancialModelingPrep:
     def get_url(function_name:str, args:dict) -> str:
@@ -15,6 +16,13 @@ class FinancialModelingPrep:
 
         return url
     
+    def prepare_ticker_name(ticker_name):
+        # We do not need to provide exchange name for 
+        # Financial Modeling Prep to get the data
+        analyzed_ticker = Util.analyze_ticker_name(ticker_name)
+        ticker_name = analyzed_ticker["symbol"]
+        return ticker_name
+    
     def fetch_json(url:str) -> dict:
         result = {}
 
@@ -26,9 +34,12 @@ class FinancialModelingPrep:
         return result
 
     def fetch_company_outlook(ticker_name:str) -> dict:
+        ticker_name = FinancialModelingPrep.prepare_ticker_name(ticker_name)
+
         args = {
             "symbol": ticker_name
         }
+
         url = FinancialModelingPrep.get_url("v4/company-outlook", args)
         result = FinancialModelingPrep.fetch_json(url)
 
@@ -39,6 +50,8 @@ class FinancialModelingPrep:
         return result
 
     def fetch_company_key_metrics(ticker_name:str) -> dict:
+        ticker_name = FinancialModelingPrep.prepare_ticker_name(ticker_name)
+
         args = {}
         url = FinancialModelingPrep.get_url("v3/key-metrics-ttm/" + ticker_name, args)
         result = FinancialModelingPrep.fetch_json(url)
@@ -50,6 +63,8 @@ class FinancialModelingPrep:
         return result
 
     def fetch_income_statement(ticker_name:str) -> dict:
+        ticker_name = FinancialModelingPrep.prepare_ticker_name(ticker_name)
+
         args = {
             "limit": 5
         }
@@ -63,6 +78,8 @@ class FinancialModelingPrep:
         return result
 
     def fetch_balance_sheet_statement(ticker_name:str) -> dict:
+        ticker_name = FinancialModelingPrep.prepare_ticker_name(ticker_name)
+
         args = {
             "limit": 5
         }
@@ -76,6 +93,8 @@ class FinancialModelingPrep:
         return result
     
     def fetch_cash_flow_statement(ticker_name:str) -> dict:
+        ticker_name = FinancialModelingPrep.prepare_ticker_name(ticker_name)
+
         args = {
             "limit": 5
         }
@@ -89,6 +108,8 @@ class FinancialModelingPrep:
         return result
 
     def fetch_stock_intraday(ticker_name:str) -> dict:
+        ticker_name = FinancialModelingPrep.prepare_ticker_name(ticker_name)
+
         args = {}
         url = FinancialModelingPrep.get_url("v3/historical-chart/1min/" + ticker_name, args)
         result = FinancialModelingPrep.fetch_json(url)
@@ -100,6 +121,8 @@ class FinancialModelingPrep:
         return result
     
     def fetch_stock_5min(ticker_name:str) -> dict:
+        ticker_name = FinancialModelingPrep.prepare_ticker_name(ticker_name)
+
         args = {}
         url = FinancialModelingPrep.get_url("v3/historical-chart/5min/" + ticker_name, args)
         result = FinancialModelingPrep.fetch_json(url)
@@ -111,6 +134,8 @@ class FinancialModelingPrep:
         return result
 
     def fetch_stock_daily(ticker_name:str) -> dict:
+        ticker_name = FinancialModelingPrep.prepare_ticker_name(ticker_name)
+
         args = {}
         url = FinancialModelingPrep.get_url("v3/historical-price-full/" + ticker_name, args)
         result = FinancialModelingPrep.fetch_json(url)
@@ -122,6 +147,9 @@ class FinancialModelingPrep:
         return result
     
     def fetch_prices_of_indexes(arg:str) -> dict:
+        if Util.is_global_ticker_name(arg) == False:
+            raise Exception("fetch_indexes_prices failed global ticker name check, arg: " + arg)
+
         args = {}
         url = FinancialModelingPrep.get_url("v3/quotes/index", args)
         result = FinancialModelingPrep.fetch_json(url)

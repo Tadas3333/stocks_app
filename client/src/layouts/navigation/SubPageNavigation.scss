@@ -1,0 +1,23 @@
+@import "assets/styles/Colors.scss";
+
+.sub-page-navigation a{
+    display: inline-block;
+    text-decoration: none;
+    color: $black-color;
+    padding: 8px 20px 8px 20px;
+    margin-right: 10px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 7px;
+}
+
+.sub-page-navigation .active, .sub-page-navigation .active:hover {
+    background-color: $blue-color;
+    color: $white-color;
+}
+
+.sub-page-navigation a:hover {
+    background-color: $grey-l-color;
+}

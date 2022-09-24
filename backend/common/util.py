@@ -10,10 +10,35 @@ class Util:
 			return 0
 		
 	def is_valid_ticker_name(ticker_name:str) -> bool:
-		if ticker_name is None or ticker_name == "" or len(ticker_name) > 5:
+		if ticker_name is None or ticker_name == "":
 			return False
 		else:
 			return True
+	
+	def is_global_ticker_name(ticker_name:str) -> bool:
+		if ticker_name == "@@@@":
+			return True
+		else:
+			return False
+	
+	def analyze_ticker_name(ticker_name:str) -> dict:
+		if ticker_name.find("-") != -1:
+			split = ticker_name.split("-", 1)
+
+			if len(split) != 2 or split[0] is None or split[1] is None \
+				or split[0] == "" or split[1] == "":
+				raise Exception("analyze_ticker_name failed, ticker_name: " + str(ticker_name))
+			
+			return {
+				"exchange": split[0],
+				"symbol": split[1]
+			}
+			
+		return {
+			"exchange": None,
+			"symbol": ticker_name
+		}
+
 	
 	def query_data_array(data:dict, key:str, whereValue)->dict:
 		for item in data:

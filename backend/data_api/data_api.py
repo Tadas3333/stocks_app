@@ -39,6 +39,9 @@ def route(func) -> str:
     if Util.is_valid_ticker_name(arg) == False:
       raise Exception("Invalid ticker name: " + str(arg))
 
+    # Raise exception if analysis fails
+    Util.analyze_ticker_name(arg)
+
     DataAPI.update_data(data_api_config, arg)
 
     return "1"
