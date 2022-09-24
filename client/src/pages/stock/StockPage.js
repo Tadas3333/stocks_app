@@ -6,7 +6,7 @@ import StockRoutes from 'routes/stock/StockRoutes'
 import useStockOverviewData from 'data/stock/StockOverviewData'
 import LiveTickerData from 'components/live/LiveTickerData'
 import LiveTickerChart from 'components/live/LiveTickerChart'
-import PageTopTickerName from 'components/various/PageTopTickerName'
+import PageTopTickerName from 'components/ticker/PageTopTickerName'
 import Util from 'util/Util';
 
 export default function StockPage() {
