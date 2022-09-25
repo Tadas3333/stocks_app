@@ -51,12 +51,10 @@ export default function BarsChartTemplate(props) {
                   name: data[i].name,
                   type: 'bar',
                   data: data[i].values,
-                  barMaxWidth: 50,
+                  barMaxWidth: 30,
                   itemStyle: {
-                    normal: {
-                        barBorderRadius: 3,
-                        color: colors[i]
-                    }
+                    borderRadius: 3,
+                    color: colors[i]
                   },
                   cursor: 'default'
                 }

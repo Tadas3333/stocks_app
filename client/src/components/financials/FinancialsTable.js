@@ -67,7 +67,7 @@ export default function FinancialsTable(props) {
                     }
     
                     result.push(
-                        <FinancialsTableRow label={key} col1={col1} col2={col2} col3={col3} col4={col4} col5={col5} />
+                        <FinancialsTableRow key={key} label={key} col1={col1} col2={col2} col3={col3} col4={col4} col5={col5} />
                     );
                 }
     

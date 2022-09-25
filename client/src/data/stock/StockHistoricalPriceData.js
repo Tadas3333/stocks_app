@@ -26,7 +26,6 @@ export default function useStockHistoricalPriceData(tickerSymbol, dataType) {
                 } else if (dataType === "5Y") {
                   url = "get_stock_5years";
                 } else {
-                  // Year to date
                   url = "get_stock_ytd";
                 }
 

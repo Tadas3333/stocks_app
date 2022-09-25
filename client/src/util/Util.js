@@ -103,4 +103,13 @@ export default class Util {
         symbol = Util.nvl(symbol, "");
         return exchange + "-" + symbol;
     }
+
+    static removeExchange(symbol) {
+        if(Util.isNull(symbol)) {
+            return symbol;
+        }
+
+        var split = symbol.split("-", 2);
+        return split[split.length-1];
+    }
 }

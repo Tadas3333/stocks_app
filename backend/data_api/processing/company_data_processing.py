@@ -11,7 +11,7 @@ class CompanyDataProcessing:
         result["currency"] = outlook_data["profile"]["currency"] if "profile" in outlook_data and "currency" in outlook_data["profile"] else None
         result["sector"]  = outlook_data["profile"]["sector"] if "profile" in outlook_data and "sector" in outlook_data["profile"] else None
         result["industry"] = outlook_data["profile"]["industry"] if "profile" in outlook_data and "industry" in outlook_data["profile"] else None
-        result["exchange"] = outlook_data["profile"]["exchange"] if "profile" in outlook_data and "exchange" in outlook_data["profile"] else None
+        result["exchange"] = outlook_data["profile"]["exchangeShortName"] if "profile" in outlook_data and "exchangeShortName" in outlook_data["profile"] else None
         result["companyDescription"] = outlook_data["profile"]["description"] if "profile" in outlook_data and "description" in outlook_data["profile"] else None
         result["name"] = outlook_data["profile"]["companyName"] if "profile" in outlook_data and "companyName" in outlook_data["profile"] else None
         result["image"] = outlook_data["profile"]["image"] if "profile" in outlook_data and "image" in outlook_data["profile"] else None

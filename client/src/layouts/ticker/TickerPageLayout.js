@@ -18,8 +18,8 @@ export default function TickerPageLayout(props) {
 				</div>
 			</div>
 
-			<div className="container py-3">
-				<div className="row">
+			<div className="container">
+				<div className="row py-3 section-border-bottom">
 					<div className="col">
 						{props.tickerName}
 					</div>
