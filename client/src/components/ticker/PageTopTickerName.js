@@ -16,10 +16,10 @@ export default function PageTopTickerName(props) {
 					<div className="ms-3 page-top-ticker-name">{props.overviewData["name"]}</div>
 					<div className="ms-3 font-size-14">{props.overviewData["exchange"]}:</div>
 					<div className="ms-2 font-weight-600 font-size-14">{Util.removeExchange(props.tickerSymbol)}</div>
-					<div className="ms-3 font-size-14">Currency:</div>
-					<div className="ms-2 font-weight-600 font-size-14">{props.overviewData["currency"]}</div>
 					<div className="ms-3 font-size-14">Market Cap:</div>
 					<div className="ms-2 font-weight-600 font-size-14">{Util.prettifyAmount(props.overviewData["marketCap"])}</div>
+					<div className="ms-3 font-size-14">Currency:</div>
+					<div className="ms-2 font-weight-600 font-size-14">{props.overviewData["currency"]}</div>
 				</div>
 			</div>
 		</div>
