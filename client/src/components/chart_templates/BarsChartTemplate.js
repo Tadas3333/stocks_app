@@ -92,7 +92,7 @@ export default function BarsChartTemplate(props) {
                         type: 'shadow',
                         shadowStyle: {
                             //Don't change this, because it is used in position algorithm
-                            color: "rgba(0, 40, 80, 0.03)"
+                            color: Colors.getMoreDarkBlueChartColor(0.03)
                         }
                     },
                     backgroundColor: 'rgba(0, 0, 0, 0.98)',
@@ -124,7 +124,7 @@ export default function BarsChartTemplate(props) {
                           //Temporary solution
                           //It is a very bad solution, but for now I couldn't find a way to do find
                           //highlighted chart coordinates natively with current Echarts version
-                          if(fill === "rgb(0,40,80)" && fillOpacity === "0.03") {
+                          if(fill === Colors.getMoreDarkBlueChartColor(null) && fillOpacity === "0.03") {
                             bBox = $(obj)[0].getBBox();
                           }
                         });

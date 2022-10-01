@@ -10,19 +10,19 @@ export default function FinancialsTableRow(props) {
                 <div className="col-7 ps-0">
                     <div className="row">
                         <div className="col px-0 text-center">
-                            <div className="w-100 financials-table-cell financials-table-secondary-color">{props.col1}</div>
+                            <div className="w-100 financials-table-cell">{props.col1}</div>
                         </div>
                         <div className="col px-0 text-center">
                             <div className="w-100 financials-table-cell">{props.col2}</div>
                         </div>
                         <div className="col px-0 text-center">
-                            <div className="w-100 financials-table-cell financials-table-secondary-color">{props.col3}</div>
+                            <div className="w-100 financials-table-cell">{props.col3}</div>
                         </div>
                         <div className="col px-0 text-center">
                             <div className="w-100 financials-table-cell">{props.col4}</div>
                         </div>
                         <div className="col px-0 text-center">
-                            <div className="w-100 financials-table-cell financials-table-secondary-color">{props.col5}</div>
+                            <div className="w-100 financials-table-cell">{props.col5}</div>
                         </div>
                     </div>
                 </div>

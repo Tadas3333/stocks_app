@@ -33,6 +33,7 @@ class FinancialsProcessing:
                 "Earnings Before Tax Margin": Util.two_decimal_float(s["incomeBeforeTaxRatio"]) if "incomeBeforeTaxRatio" in s else None
             })
 
+        result["statements"].reverse()
         return result
 
     def get_balance_sheet_statement(data:dict):
@@ -72,7 +73,8 @@ class FinancialsProcessing:
                 "Total Debt": s["totalDebt"] if "totalDebt" in s else None,
                 "Net Debt": s["netDebt"] if "netDebt" in s else None
             })
-        
+
+        result["statements"].reverse()
         return result
 
     def get_cash_flow_statement(data:dict) -> dict:
@@ -113,5 +115,6 @@ class FinancialsProcessing:
                 "Free Cash Flow": s["freeCashFlow"] if "freeCashFlow" in s else None
 
             })
-        
+
+        result["statements"].reverse()
         return result

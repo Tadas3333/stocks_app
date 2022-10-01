@@ -1,14 +1,10 @@
+@import "assets/styles/Colors.scss";
+
 .financials-table-cell {
-    background-color: #f8f8f8;
-    border: 1px solid #dddddd;
     padding: 8px;
     font-size: 14px;
 }
 
 .financials-table-label {
     font-weight: 700;
-}
-
-.financials-table-secondary-color {
-    background-color: #e8e8e8;
 }

@@ -1,16 +1,22 @@
+import Util from 'util/Util';
 
 export default class Colors {
-    static blueChartColor = "0, 128, 255";
-    static darkRedChartColor = "185, 27, 40";
-    static greenChartColor = "33, 157, 53";
-    static darkGreenChartColor = "29, 136, 46";
-    static orangeChartColor = "225, 93, 45";
-    static yellowChartColor = "238, 191, 51";
-    static purpleChartColor = "167, 78, 255";
-    static lightGreyChartColor = "243, 243, 243";
+    static blueChartColor = "0,119,238";
+    static moreDarkBlueChartColor = "0,40,80";
+    static darkRedChartColor = "185,27,40";
+    static greenChartColor = "33,157,53";
+    static darkGreenChartColor = "29,136,46";
+    static orangeChartColor = "225,93,45";
+    static yellowChartColor = "238,191,51";
+    static purpleChartColor = "167,78,255";
+    static lightGreyChartColor = "243,243,243";
 
     static getBlueChartColor(opacity=1) {
         return Colors.getColor(Colors.blueChartColor, opacity);
+    }
+
+    static getMoreDarkBlueChartColor(opacity=1) {
+        return Colors.getColor(Colors.moreDarkBlueChartColor, opacity);
     }
 
     static getDarkRedChartColor(opacity=1) {
@@ -42,6 +48,10 @@ export default class Colors {
     }
 
     static getColor(rgb, opacity) {
-        return "rgba(" + rgb + ", " + opacity + ")";
+        if(!Util.isNull(opacity)) {
+            return "rgba(" + rgb + ", " + opacity + ")";
+        } else {
+            return "rgb(" + rgb + ")";
+        }
     }
 }

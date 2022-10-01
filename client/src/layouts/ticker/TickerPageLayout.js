@@ -35,6 +35,11 @@ export default function TickerPageLayout(props) {
 								{props.tickerChart}
 							</div>
 						</div>
+						<div className="row mt-2">
+							<div className="col">
+								{props.tickerRangesData}
+							</div>
+						</div>
 					</div>
 					<div className="col-3">
 						{/*<img src="/ad.jpg" alt="Ad" className="stock-market-page-top-ad"></img>*/}

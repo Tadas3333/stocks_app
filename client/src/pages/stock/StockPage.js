@@ -36,6 +36,11 @@ export default function StockPage() {
 				<LiveTickerChart tickerSymbol={tickerSymbol} overviewData={overviewData}/>
 			}
 
+			tickerRangesData=
+			{
+				<>Ranges</>
+			}
+
 			subPageLinks=
 			{
 				[
