@@ -13,9 +13,22 @@ $orange-d-color: rgb(213, 88, 43);
 $yellow-color:rgb(238, 191, 51);
 $purple-color: rgb(167, 78, 255);
 
+$grey-dark-color: #343a40;
+$grey-100-color: #f8f9fa;
+$grey-150-color: #f4f5f6;
+$grey-200-color: #e9ecef;
+$grey-300-color: #dee2e6;
+$grey-400-color: #ced4da;
+$grey-500-color: #adb5bd;
+$grey-600-color: #6c757d;
+$grey-700-color: #495057;
+$grey-800-color: #343a40;
+$grey-900-color: #212529;
+
+/*
 $grey-l-color: #f0f1f2;
 $grey-color: #cccccc;
-$grey-d-color: rgb(116, 117, 122);//rgb(103, 104, 108)
+$grey-d-color: rgb(116, 117, 122);//rgb(103, 104, 108)*/
 
 $white-color: #ffffff;
 $black-color: #000000;
@@ -49,9 +62,9 @@ $black-color: #000000;
 }
 
 .color-grey {
-    color: $grey-d-color;
+    color: $grey-600-color; 
 }
 
 .background-grey {
-    background-color: $grey-l-color;
+    background-color: $grey-150-color; 
 }

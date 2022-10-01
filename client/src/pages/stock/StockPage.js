@@ -5,6 +5,7 @@ import TickerPageLayout from 'layouts/ticker/TickerPageLayout'
 import StockRoutes from 'routes/stock/StockRoutes'
 import useStockOverviewData from 'data/stock/StockOverviewData'
 import LiveTickerData from 'components/live/LiveTickerData'
+import LiveTickerRangesData from 'components/live/LiveTickerRangesData'
 import LiveTickerChart from 'components/live/LiveTickerChart'
 import PageTopTickerName from 'components/ticker/PageTopTickerName'
 import Util from 'util/Util';
@@ -28,7 +29,7 @@ export default function StockPage() {
 
 			tickerData=
 			{
-				<LiveTickerData tickerSymbol={tickerSymbol} overviewData={overviewData}/>
+				<LiveTickerData overviewData={overviewData}/>
 			}
 
 			tickerChart=
@@ -38,7 +39,7 @@ export default function StockPage() {
 
 			tickerRangesData=
 			{
-				<>Ranges</>
+				<LiveTickerRangesData tickerSymbol={tickerSymbol} overviewData={overviewData}/>
 			}
 
 			subPageLinks=
