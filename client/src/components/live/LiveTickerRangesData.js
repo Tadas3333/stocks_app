@@ -23,11 +23,11 @@ export default function LiveTickerRangesData(props) {
                 <div className="mt-1"><Progress /></div>
             </div>
             <div className="col-4 text-center font-size-12 align-self-center">
-                Day Range:<br/>
+                Day Range<br/>
                 <RangeSlider />
             </div>
             <div className="col-4 text-center font-size-12 align-self-center">
-                52 Week Range:<br/>
+                52 Week Range<br/>
                 <RangeSlider />
             </div>
         </div>
