@@ -1,6 +1,13 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowDown, faArrowUp, faMoon, faCloudSun, faSun} from '@fortawesome/free-solid-svg-icons'
+import { faArrowDown, 
+         faArrowTurnDown, 
+         faArrowUp, 
+         faMoon, 
+         faCloudSun, 
+         faSun} from '@fortawesome/free-solid-svg-icons'
 import Util from "util/Util"
+import RangeSlider from "components/sliders/RangeSlider"
+import Progress from "components/progress/Progress"
 import './LiveTickerData.scss'
 
 export default function LiveTickerData(props) {
@@ -56,8 +63,38 @@ export default function LiveTickerData(props) {
         <div className="live-ticker-data-section-price-change">
                 <span className={colorClass}>{icon} {priceChange} ({priceChangePercentage}%)</span>
         </div>
-        <div className="live-ticker-data-section-ticker-details mt-4">
+        <div className="mt-2 text-end font-size-12">
             Last Updated: August 26 04:00PM EDT
+        </div>
+        <div className="text-end font-size-12">
+            Previous Close: 
+            <span className="px-1">{currency}{currentPrice}</span>
+            <span className={colorClass}>{icon} {priceChange} ({priceChangePercentage}%)</span>
+        </div>
+
+        <div className="row mt-3">
+            <div className="col-6 text-center font-size-12">
+                Day Range:<br/>
+                <span className="font-size-10"><RangeSlider /></span>
+            </div>
+            <div className="col-6 text-center font-size-12">
+                52 Week Range:<br/>
+                <span className="font-size-10"><RangeSlider /></span>
+            </div>
+        </div>
+        <div className="mt-3 font-size-12">
+            <div className="row">
+                <div className="col-6 pe-0">
+                    Volume: 45.44M
+                </div>
+                <div className="col-6 position-relative ps-0">
+                    <div className="live-ticker-data-volume-icon">
+                        <FontAwesomeIcon icon={faArrowTurnDown} transform="flip-h"/>
+                    </div>
+                    <span className="ps-2">Avg Volume: 34.81M</span>
+                </div>
+            </div>
+            <div className="mt-1"><Progress /></div>
         </div>
         </>
     );

@@ -1,0 +1,23 @@
+@import "assets/styles/Colors.scss";
+
+.progress-line, .progress-line-inner {
+    border-radius: 4px;
+    min-height: 8px;
+}
+
+.progress-line {
+    position: relative;
+    background-color: $grey-200-color;
+}
+
+.progress-line-inner {
+    background-color: $grey-400-color;
+}
+
+.progress-line-middle {
+    position: absolute;
+    width: 1px;
+    height: 100%;
+    left: 50%;
+    background-color: $grey-600-color;
+}
