@@ -36,7 +36,7 @@ export default function TickerPageLayout(props) {
 								{props.tickerChart}
 							</div>
 						</div>
-						<div className="row mt-2">
+						<div className="row">
 							<div className="col">
 								{props.tickerRangesData}
 							</div>
