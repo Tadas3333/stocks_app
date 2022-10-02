@@ -1,6 +1,7 @@
 import MainNavigation from 'layouts/navigation/MainNavigation'
 import SubPageNavigation from 'layouts/navigation/SubPageNavigation'
 import MarketIndexes from 'layouts/market_indexes/MarketIndexes'
+import Advertisement from 'components/advertisement/Advertisement'
 import Footer from 'layouts/footer/Footer'
 
 export default function TickerPageLayout(props) {
@@ -41,8 +42,8 @@ export default function TickerPageLayout(props) {
 							</div>
 						</div>
 					</div>
-					<div className="col-3">
-						{/*<img src="/ad.jpg" alt="Ad" className="stock-market-page-top-ad"></img>*/}
+					<div className="col-3 mt-4">
+						<Advertisement />
 					</div>
 				</div>
 			</div>
