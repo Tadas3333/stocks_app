@@ -9,7 +9,7 @@ export default function ScatterChartTemplate(props) {
     useEffect(() => {
       try {
             setOption({
-                  animationEasingUpdate: 'cubicOut',
+                  animation: false,
                   legend: {
                     data: ['Consensus EPS'],
                     bottom: 0,

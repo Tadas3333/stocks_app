@@ -1,15 +1,22 @@
 import Util from 'util/Util';
 
+//$red-color: rgb(255, 191, 191);$green-color: rgb(164, 241, 185);
+
 export default class Colors {
     static blueChartColor = "0,119,238";
     static moreDarkBlueChartColor = "0,40,80";
+
+    static redChartColor = "255,191,191";
     static darkRedChartColor = "185,27,40";
-    static greenChartColor = "33,157,53";
+
+    static greenChartColor = "174,244,193";
     static darkGreenChartColor = "29,136,46";
+
     static orangeChartColor = "225,93,45";
     static yellowChartColor = "238,191,51";
     static purpleChartColor = "167,78,255";
     static lightGreyChartColor = "243,243,243";
+    static whiteChartColor = "255,255,255";
 
     static getBlueChartColor(opacity=1) {
         return Colors.getColor(Colors.blueChartColor, opacity);
@@ -17,6 +24,10 @@ export default class Colors {
 
     static getMoreDarkBlueChartColor(opacity=1) {
         return Colors.getColor(Colors.moreDarkBlueChartColor, opacity);
+    }
+
+    static getRedChartColor(opacity=1) {
+        return Colors.getColor(Colors.redChartColor, opacity);
     }
 
     static getDarkRedChartColor(opacity=1) {
@@ -45,6 +56,10 @@ export default class Colors {
 
     static getLightGreyColor(opacity=1) {
         return Colors.getColor(Colors.lightGreyChartColor, opacity);
+    }
+
+    static getWhiteChartColor(opacity=1) {
+        return Colors.getColor(Colors.whiteChartColor, opacity);
     }
 
     static getColor(rgb, opacity) {

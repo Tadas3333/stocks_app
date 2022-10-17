@@ -71,7 +71,7 @@ export default function BarsChartTemplate(props) {
             var valueUnit = Util.getAmountUnit(maxValue);
 
             setOption({
-                  animationEasingUpdate: 'cubicOut',
+              animation: false,
                   legend: {
                     bottom: 0,
                     left: 0,

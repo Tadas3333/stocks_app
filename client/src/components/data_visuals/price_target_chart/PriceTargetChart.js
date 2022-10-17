@@ -8,42 +8,74 @@ import Util from 'util/Util';
 export default function PriceTargetChart(props) {
     const priceData = useStockHistoricalPriceData(props.tickerSymbol, '3Y');
     const priceTargetData = useStockPriceTargetConsensusData(props.tickerSymbol);
-    const [forecastValues, setForecastValues] = useState([]);
+    const [chartData, setChartData] = useState(null);
 
     useEffect(() => {
         try {
-            if(!Util.isNull(priceTargetData)) {
-                var values = [];
+            if(!Util.isNull(priceData) && !Util.isNull(priceTargetData)) {
+                var forecastValues = [];
 
                 if(!Util.isNull(priceTargetData.targetHigh)) {
-                    values.push(priceTargetData.targetHigh);
+                    forecastValues.push(priceTargetData.targetHigh);
                 }
 
                 if(!Util.isNull(priceTargetData.targetLow)) {
-                    values.push(priceTargetData.targetLow);
+                    forecastValues.push(priceTargetData.targetLow);
                 }
 
                 if(!Util.isNull(priceTargetData.targetConsensus)) {
-                    values.push(priceTargetData.targetConsensus);
+                    forecastValues.push(priceTargetData.targetConsensus);
+                }
+                
+                var historicalValues = []
+                
+                if(priceData.data.length > 100 ) {
+                    for(var i=0; i < priceData.data.length; i++) {
+                        if(i%5 === 0) {
+                            historicalValues.push(priceData.data[i]);
+                        }
+                    }
+                } else {
+                    historicalValues = priceData.data;
                 }
 
-                console.log(values);
-                setForecastValues(values);
+                var data = {
+                    "historicalValues": {
+                        "minValue": priceData.minValue,
+                        "maxValue": priceData.maxValue,
+                        "data": historicalValues
+                    },
+                    "futureValues": forecastValues
+                }
+
+                setChartData(data);
             }
         } catch(err) {
             console.log(err);
         };
-    }, [priceTargetData]);
+    }, [priceData, priceTargetData]);
     
 
 	return (
 		<>
         <div className="row">
             <div className="col-6">
-                <LineForecastChartTemplate 
-                historicalData={priceData} 
-                forecastValues={forecastValues}
-                />
+                {
+                        !Util.isNull(chartData) && !Util.isNull(chartData.futureValues) 
+                        ?
+                        (
+                            chartData.futureValues.length > 0
+                            ?
+                            <LineForecastChartTemplate 
+                            data={chartData}
+                            />
+                            :
+                            <>There are no price targets available for this ticker symbol</>
+                        ) 
+                        :
+                        <></>
+                }
+
             </div>
         </div>
         </>

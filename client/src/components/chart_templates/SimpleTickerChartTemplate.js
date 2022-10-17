@@ -60,7 +60,7 @@ export default function SimpleTickerChartTemplate(props) {
             var echarts = require("echarts");
 
             setOption({
-                animationEasingUpdate: 'cubicOut',
+                animation: false,
                 tooltip: {
                     show:true,
                     trigger: 'axis',
@@ -98,6 +98,7 @@ export default function SimpleTickerChartTemplate(props) {
                       splitArea: {
                         show: false
                       },
+                      boundaryGap: false,
                       axisLabel: {
                         interval: function (index, value) {
                           /*
@@ -129,6 +130,7 @@ export default function SimpleTickerChartTemplate(props) {
                       type: 'category',
                       data: t_labels,
                       show: false,
+                      boundaryGap: false,
                       gridIndex: 1,
                     }
                   ],

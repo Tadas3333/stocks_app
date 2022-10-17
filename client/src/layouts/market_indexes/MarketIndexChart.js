@@ -36,7 +36,7 @@ export default function MarketIndexChart(props) {
 
             setCachedOption(
             {
-                animationEasingUpdate: 'cubicOut',
+                animation: false,
                 xAxis: [
                   {
                       type: 'category',
