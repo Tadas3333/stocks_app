@@ -34,6 +34,10 @@ class DataAPI:
             # Data is not yet being updated, updated it:
             with DataAPI.uco_locks[lock_name]:
                 processing_config = Util.query_data_array(DataAPIConfig.PROCESSING_CONFIG, DataAPIConfig.PROCESSED_DATA_NAME, processed_data_name)
+                
+                if processing_config is None:
+                    raise Exception("processing_config is None for arg " + str(arg) + ", processed_data_name: " + str(processed_data_name))
+                
                 processed_name = processing_config[DataAPIConfig.PROCESSED_DATA_NAME]
                 processing_function = processing_config[DataAPIConfig.DATA_PROCESSING_FUNCTION]
                 source = local_api_config[DataAPIConfig.SOURCE_DATA_NAME]

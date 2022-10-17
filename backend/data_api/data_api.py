@@ -23,11 +23,14 @@ def get_request_argument(argument_name:str) -> str:
 # http://127.0.0.1:4000/update_stock_news?arg=TSLA
 @app.route("/<func>")
 def route(func) -> str:
+  url = ""
+
   try:
     if func == "favicon.ico":
       return "x"
-    
-    print("# " + Config.DATA_API_URL + "/" + func + " " + str(request.args))
+
+    url = "# " + Config.DATA_API_URL + "/" + func + " " + str(request.args)
+    print(url)
 
     data_api_config = Util.query_data_array(DataAPIConfig.DATA_API_CONFIG, DataAPIConfig.DATA_API_ROUTE, func)
 
@@ -46,7 +49,7 @@ def route(func) -> str:
 
     return "1"
   except Exception as e:
-    Errors.log(str(e))
+    Errors.log("URL:" + str(url) + ", EXCEPTION: " + str(e))
     return "0"
 
 if __name__ == '__main__':

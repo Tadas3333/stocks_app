@@ -15,18 +15,19 @@ export default function PriceTargetChart(props) {
             if(!Util.isNull(priceTargetData)) {
                 var values = [];
 
-                if(!Util.isNull(priceTargetData["targetHigh"])) {
-                    values.push(priceTargetData["targetHigh"]);
+                if(!Util.isNull(priceTargetData.targetHigh)) {
+                    values.push(priceTargetData.targetHigh);
                 }
 
-                if(!Util.isNull(priceTargetData["targetLow"])) {
-                    values.push(priceTargetData["targetLow"]);
+                if(!Util.isNull(priceTargetData.targetLow)) {
+                    values.push(priceTargetData.targetLow);
                 }
 
-                if(!Util.isNull(priceTargetData["targetConsensus"])) {
-                    values.push(priceTargetData["targetConsensus"]);
+                if(!Util.isNull(priceTargetData.targetConsensus)) {
+                    values.push(priceTargetData.targetConsensus);
                 }
-                
+
+                console.log(values);
                 setForecastValues(values);
             }
         } catch(err) {

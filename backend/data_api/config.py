@@ -45,7 +45,7 @@ class DataAPIConfig:
             DATA_SOURCING_FUNCTION: FinancialModelingPrep.fetch_prices_of_indexes
         },
         {
-            SOURCE_DATA_NAME: "STOCK_PRICE_TARGET_CONSESUS",
+            SOURCE_DATA_NAME: "STOCK_PRICE_TARGET_CONSENSUS",
             DATA_SOURCING_FUNCTION: FinancialModelingPrep.fetch_stock_price_target_consensus
         }
     ]
@@ -113,7 +113,7 @@ class DataAPIConfig:
             DATA_PROCESSING_FUNCTION: IndexesProcessing.get_prices_of_indexes
         },
         {
-            PROCESSED_DATA_NAME: "STOCK_PRICE_TARGET_CONSESUS",
+            PROCESSED_DATA_NAME: "STOCK_PRICE_TARGET_CONSENSUS",
             DATA_PROCESSING_FUNCTION: ForecastProcessing.get_stock_price_target_consensus
         }
     ]
@@ -197,7 +197,7 @@ class DataAPIConfig:
         },
         {
             DATA_API_ROUTE: "update_stock_price_target_consensus",
-            SOURCE_DATA_NAME: "STOCK_PRICE_TARGET_CONSESUS",
-            PROCESSED_DATA_NAME: "STOCK_PRICE_TARGET_CONSESUS"
+            SOURCE_DATA_NAME: "STOCK_PRICE_TARGET_CONSENSUS",
+            PROCESSED_DATA_NAME: "STOCK_PRICE_TARGET_CONSENSUS"
         }
     ]

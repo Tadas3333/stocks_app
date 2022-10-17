@@ -20,6 +20,10 @@ class ProcessedData:
             
             # Call update function url
             conf = Util.query_data_array(ClientAPIConfig.CLIENT_API_CONFIG, ClientAPIConfig.PROCESSED_DATA_NAME, self.data_name)
+            
+            if conf is None:
+                raise Exception("conf is None for arg " + str(self.data_arg) + ", self.data_name: " + str(self.data_name))
+            
             response = requests.get(Config.DATA_API_URL + "/" + conf[ClientAPIConfig.DATA_API_UPDATE_ROUTE] + "?" + ClientAPIConfig.ARGUMENT + "=" + self.data_arg)
             response = response.content.decode('utf-8')
 

@@ -24,11 +24,14 @@ def get_request_argument(argument_name:str) -> str:
 # http://127.0.0.1:5000/get_stock_news?arg=TSLA
 @app.route("/<func>")
 def route(func) -> str:
+  url = ""
+
   try:
     if func == "favicon.ico":
       return "x"
     
-    print("# " + Config.CLIENT_API_URL + "/" + func + " " + str(request.args))
+    url = "# " + Config.CLIENT_API_URL + "/" + func + " " + str(request.args)
+    print(url)
 
     public_api_config = Util.query_data_array(ClientAPIConfig.CLIENT_API_CONFIG, ClientAPIConfig.CLIENT_API_ROUTE, func)
 
@@ -45,7 +48,7 @@ def route(func) -> str:
 
     return json.dumps(ClientAPI.get_data(public_api_config, arg))
   except Exception as e:
-    Errors.log(str(e))
+    Errors.log("URL:" + str(url) + ", EXCEPTION: " + str(e))
     return "{}"
 
 if __name__ == '__main__':

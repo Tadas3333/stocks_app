@@ -11,7 +11,7 @@ export default function LineForecastChartTemplate(props) {
     useEffect(() => {
       try {
           if(!Util.isNull(props.historicalData) && !Util.isNull(props.historicalData["data"]) &&
-             !Util.isNull(props.forecastValues)) {
+             !Util.isNull(props.forecastValues) && props.forecastValues.length > 0) {
             var t_labels = [];
             var t_data = [];
             var crncy = Util.getCurrencySymbol(props.currency);
@@ -47,8 +47,21 @@ export default function LineForecastChartTemplate(props) {
               }]
             );
 
+            var minValue = parseFloat(props.historicalData["minValue"]);
+            var maxValue = parseFloat(props.historicalData["maxValue"]);
+
             //Additional forecast lines
-            for(var a=0; a < props.forecastValues; a++) {
+            for(var a=0; a < props.forecastValues.length; a++) {
+              console.log("adding " + props.forecastValues[a]);
+
+              if(props.forecastValues[a] < minValue) {
+                minValue = props.forecastValues[a];
+              }
+
+              if(props.forecastValues[a] > maxValue) {
+                maxValue = props.forecastValues[a];
+              }
+
               forecastLines.push(
                 [
                 {
@@ -62,8 +75,6 @@ export default function LineForecastChartTemplate(props) {
               );
             }
 
-            var minValue = parseFloat(props.historicalData["minValue"]);
-            var maxValue = parseFloat(props.historicalData["maxValue"]);
             var diff = (maxValue - minValue) * 0.1;
 
             maxValue += diff;
