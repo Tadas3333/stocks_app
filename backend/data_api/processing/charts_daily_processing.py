@@ -56,8 +56,8 @@ class ChartsDailyProcessing:
                 maxValue  = price
             
             result = result + [{
-                "date": ChartsDailyProcessing.format_date(datetime.strptime(day["date"], '%Y-%m-%d')),
-                "open": "{0:.4f}".format(float(price)),
+                "category": ChartsDailyProcessing.format_date(datetime.strptime(day["date"], '%Y-%m-%d')),
+                "value": "{0:.4f}".format(float(price)),
                 "volume": str(float(day["volume"]))
             }]
 

@@ -23,8 +23,8 @@ export default function MarketIndexChart(props) {
                 if(indx === 0) {
                     //t_labels.push(data["data"][i]["date"]);
 
-                    if(data["data"][i]["open"]) {
-                        t_data.push(data["data"][i]["open"]);
+                    if(data["data"][i]["value"]) {
+                        t_data.push(data["data"][i]["value"]);
                     }
                 } else {
                     //Skip 8 array elements

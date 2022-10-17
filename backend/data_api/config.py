@@ -7,6 +7,7 @@ from processing.charts_intraday_processing import ChartsIntradayProcessing
 from processing.charts_5days_processing import Charts5DaysProcessing
 from processing.charts_daily_processing import ChartsDailyProcessing
 from processing.indexes_processing import IndexesProcessing
+from processing.forecast_processing import ForecastProcessing
 
 class DataAPIConfig:
     # Config Keys
@@ -42,6 +43,10 @@ class DataAPIConfig:
         {
             SOURCE_DATA_NAME: "PRICES_OF_INDEXES",
             DATA_SOURCING_FUNCTION: FinancialModelingPrep.fetch_prices_of_indexes
+        },
+        {
+            SOURCE_DATA_NAME: "STOCK_PRICE_TARGET_CONSESUS",
+            DATA_SOURCING_FUNCTION: FinancialModelingPrep.fetch_stock_price_target_consensus
         }
     ]
 
@@ -106,6 +111,10 @@ class DataAPIConfig:
         {
             PROCESSED_DATA_NAME: "PRICES_OF_INDEXES",
             DATA_PROCESSING_FUNCTION: IndexesProcessing.get_prices_of_indexes
+        },
+        {
+            PROCESSED_DATA_NAME: "STOCK_PRICE_TARGET_CONSESUS",
+            DATA_PROCESSING_FUNCTION: ForecastProcessing.get_stock_price_target_consensus
         }
     ]
 
@@ -185,5 +194,10 @@ class DataAPIConfig:
             DATA_API_ROUTE: "update_prices_of_indexes",
             SOURCE_DATA_NAME: "PRICES_OF_INDEXES",
             PROCESSED_DATA_NAME: "PRICES_OF_INDEXES"
+        },
+        {
+            DATA_API_ROUTE: "update_stock_price_target_consensus",
+            SOURCE_DATA_NAME: "STOCK_PRICE_TARGET_CONSESUS",
+            PROCESSED_DATA_NAME: "STOCK_PRICE_TARGET_CONSESUS"
         }
     ]

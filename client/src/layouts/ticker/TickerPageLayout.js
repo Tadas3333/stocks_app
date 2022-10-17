@@ -49,7 +49,7 @@ export default function TickerPageLayout(props) {
 			</div>
 
 			<div className="container py-3">
-					<div className="row section-border-bottom pb-3">
+					<div className="row section-border-bottom section-border-top py-1 my-2">
 						<div className="col">
 							<SubPageNavigation 
 								links={props.subPageLinks}

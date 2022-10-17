@@ -17,8 +17,8 @@ class Charts5DaysProcessing:
 
         for d in other_days_data:
             result = result + [{
-                "date": ChartsIntradayProcessing.format_date(datetime.strptime(d["date"], '%Y-%m-%d %H:%M:%S')),
-                "open": "{0:.4f}".format(float(d["close"])),
+                "category": ChartsIntradayProcessing.format_date(datetime.strptime(d["date"], '%Y-%m-%d %H:%M:%S')),
+                "value": "{0:.4f}".format(float(d["close"])),
                 "volume": str(d["volume"])
             }]
         

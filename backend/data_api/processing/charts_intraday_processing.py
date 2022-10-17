@@ -41,8 +41,8 @@ class ChartsIntradayProcessing:
         while chart_time <= chart_end_time:
             if last_reported_date is not None and last_reported_date < chart_time and market_open == True:
                 result = result + [{
-                    "date": ChartsIntradayProcessing.format_date(chart_time),
-                    "open": None,
+                    "category": ChartsIntradayProcessing.format_date(chart_time),
+                    "value": None,
                     "volume": None
                 }]
                 chart_time = chart_time + timedelta(minutes=interval_mins)
@@ -61,8 +61,8 @@ class ChartsIntradayProcessing:
             last_price = current_price
             
             result = result + [{
-                "date": ChartsIntradayProcessing.format_date(chart_time),
-                "open": "{0:.4f}".format(float(current_price)),
+                "category": ChartsIntradayProcessing.format_date(chart_time),
+                "value": "{0:.4f}".format(float(current_price)),
                 "volume": str(current_volume)
             }]
 

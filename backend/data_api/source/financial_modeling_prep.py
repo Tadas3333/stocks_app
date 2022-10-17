@@ -159,3 +159,19 @@ class FinancialModelingPrep:
             raise Exception("fetch_indexes_prices failed data check")
         
         return result
+    
+    def fetch_stock_price_target_consensus(ticker_name:str) -> dict:
+        ticker_name = FinancialModelingPrep.prepare_ticker_name(ticker_name)
+
+        args = {
+            "symbol": ticker_name
+        }
+
+        url = FinancialModelingPrep.get_url("v4/price-target-consensus", args)
+        result = FinancialModelingPrep.fetch_json(url)
+
+        # Data check
+        if not result[0]["symbol"]:
+            raise Exception("fetch_stock_price_target_consensus(ticker_name:"+ticker_name+") failed data check")
+        
+        return result
