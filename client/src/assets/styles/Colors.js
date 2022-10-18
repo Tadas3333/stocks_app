@@ -16,6 +16,7 @@ export default class Colors {
     static yellowChartColor = "238,191,51";
     static purpleChartColor = "167,78,255";
     static lightGreyChartColor = "243,243,243";
+    static blackChartColor = "0,0,0";
     static whiteChartColor = "255,255,255";
 
     static getBlueChartColor(opacity=1) {
@@ -64,6 +65,10 @@ export default class Colors {
 
     static getLightGreyColor(opacity=1) {
         return Colors.getColor(Colors.lightGreyChartColor, opacity);
+    }
+
+    static getBlackChartColor(opacity=1) {
+        return Colors.getColor(Colors.blackChartColor, opacity);
     }
 
     static getWhiteChartColor(opacity=1) {
