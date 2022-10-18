@@ -204,7 +204,7 @@ export default function SimpleTickerChartTemplate(props) {
                         color: (isPositive ? Colors.getGreenChartColor() : Colors.getRedChartColor())
                       },
                       lineStyle: {
-                        width: 2
+                        width: 2.5
                       },
                       emphasis: {
                         disabled: true
@@ -213,11 +213,11 @@ export default function SimpleTickerChartTemplate(props) {
                         color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
                         {
                             offset: 0,
-                            color: (isPositive ? Colors.getGreenChartColor(0.4) : Colors.getRedChartColor(0.4))
+                            color: (isPositive ? Colors.getGreenChartColor(0.3) : Colors.getRedChartColor(0.3))
                         },
                         {
                             offset: 1,
-                            color: (isPositive ? Colors.getGreenChartColor(0) : Colors.getRedChartColor(0))
+                            color: (isPositive ? Colors.getGreenChartColor(0.05) : Colors.getRedChartColor(0.05))
                         }])
                       },
                       markLine: markLineJSON,

@@ -263,7 +263,7 @@ export default function LineForecastChartTemplate(props) {
                         color: Colors.getBlueChartColor()
                       },
                       lineStyle: {
-                        width: 2
+                        width: 2.5
                       },
                       emphasis: {
                         disabled: true
@@ -272,11 +272,11 @@ export default function LineForecastChartTemplate(props) {
                         color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
                         {
                             offset: 0,
-                            color: Colors.getBlueChartColor(0.4)
+                            color: Colors.getBlueChartColor(0.3)
                         },
                         {
                             offset: 1,
-                            color: Colors.getBlueChartColor(0)
+                            color: Colors.getBlueChartColor(0.05)
                         }])
                       },
                       symbol:'circle',
