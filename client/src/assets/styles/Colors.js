@@ -7,8 +7,8 @@ export default class Colors {
     static redChartColor = "224,38,54";
     static darkRedChartColor = "185,27,40";
 
-    static greenChartColor = "9,159,59";
-    static darkGreenChartColor = "9,147,55";
+    static greenChartColor = "9,159,70";
+    static darkGreenChartColor = "9,147,70";
 
     static orangeChartColor = "225,93,45";
     static yellowChartColor = "238,191,51";
