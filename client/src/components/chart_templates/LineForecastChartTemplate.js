@@ -16,7 +16,7 @@ export default function LineForecastChartTemplate(props) {
       var lineWidth = 1;
 
       if(to > from) {
-        areaClr = Colors.getGreenChartColor();
+        areaClr = Colors.getLightGreenChartColor();
         itemClr = Colors.getDarkGreenChartColor();
 
         z_indx = 0;
@@ -25,13 +25,13 @@ export default function LineForecastChartTemplate(props) {
           areaClr = Colors.getWhiteChartColor();
           z_indx = 2;
         }else{
-          areaClr = Colors.getRedChartColor();
+          areaClr = Colors.getLightRedChartColor();
           z_indx = 1;
         }
 
         if(from === to) {
           lineType = "solid";
-          lineWidth = 2.75;
+          lineWidth = 1.5;
           itemClr = Colors.getBlueChartColor();
         } else {
           itemClr = Colors.getDarkRedChartColor();
@@ -263,7 +263,7 @@ export default function LineForecastChartTemplate(props) {
                         color: Colors.getBlueChartColor()
                       },
                       lineStyle: {
-                        width: 2.75
+                        width: 2
                       },
                       emphasis: {
                         disabled: true

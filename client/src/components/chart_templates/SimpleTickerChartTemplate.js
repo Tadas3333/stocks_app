@@ -204,7 +204,7 @@ export default function SimpleTickerChartTemplate(props) {
                         color: (isPositive ? Colors.getGreenChartColor() : Colors.getRedChartColor())
                       },
                       lineStyle: {
-                        width: 2.5
+                        width: 2
                       },
                       emphasis: {
                         disabled: true

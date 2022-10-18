@@ -4,9 +4,11 @@ export default class Colors {
     static blueChartColor = "0,119,238";
     static moreDarkBlueChartColor = "0,40,80";
 
+    static lightRedChartColor = "249,231,232";
     static redChartColor = "224,38,54";
     static darkRedChartColor = "185,27,40";
 
+    static lightGreenChartColor = "229,244,234";
     static greenChartColor = "9,159,70";
     static darkGreenChartColor = "9,147,70";
 
@@ -24,12 +26,20 @@ export default class Colors {
         return Colors.getColor(Colors.moreDarkBlueChartColor, opacity);
     }
 
+    static getLightRedChartColor(opacity=1) {
+        return Colors.getColor(Colors.lightRedChartColor, opacity);
+    }
+
     static getRedChartColor(opacity=1) {
         return Colors.getColor(Colors.redChartColor, opacity);
     }
 
     static getDarkRedChartColor(opacity=1) {
         return Colors.getColor(Colors.darkRedChartColor, opacity);
+    }
+
+    static getLightGreenChartColor(opacity=1) {
+        return Colors.getColor(Colors.lightGreenChartColor, opacity);
     }
 
     static getGreenChartColor(opacity=1) {
