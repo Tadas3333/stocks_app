@@ -272,11 +272,11 @@ export default function LineForecastChartTemplate(props) {
                         color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
                         {
                             offset: 0,
-                            color: Colors.getBlueChartColor(0.3)
+                            color: Colors.getBlueChartColor(0.25)
                         },
                         {
                             offset: 1,
-                            color: Colors.getBlueChartColor(0.05)
+                            color: Colors.getBlueChartColor(0)
                         }])
                       },
                       symbol:'circle',
