@@ -1,16 +1,14 @@
 import Util from 'util/Util';
 
-//$red-color: rgb(255, 191, 191);$green-color: rgb(164, 241, 185);
-
 export default class Colors {
     static blueChartColor = "0,119,238";
     static moreDarkBlueChartColor = "0,40,80";
 
-    static redChartColor = "255,191,191";
+    static redChartColor = "224,38,54";
     static darkRedChartColor = "185,27,40";
 
-    static greenChartColor = "174,244,193";
-    static darkGreenChartColor = "29,136,46";
+    static greenChartColor = "9,159,59";
+    static darkGreenChartColor = "9,147,55";
 
     static orangeChartColor = "225,93,45";
     static yellowChartColor = "238,191,51";

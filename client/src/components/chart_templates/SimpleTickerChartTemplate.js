@@ -57,6 +57,15 @@ export default function SimpleTickerChartTemplate(props) {
             minValue -= diff;
             if(minValue < 0) minValue = 0;
 
+            var isPositive;
+            var lastValue = t_data[t_data.length-1];
+
+            if(lastValue >= lastClosePrice) {
+              isPositive = true;
+            } else {
+              isPositive = false;
+            }
+
             var echarts = require("echarts");
 
             setOption({
@@ -192,7 +201,7 @@ export default function SimpleTickerChartTemplate(props) {
                       showSymbol: false,
                       silent: true,
                       itemStyle: {
-                        color: Colors.getBlueChartColor()
+                        color: (isPositive ? Colors.getGreenChartColor() : Colors.getRedChartColor())
                       },
                       lineStyle: {
                         width: 2.5
@@ -204,11 +213,11 @@ export default function SimpleTickerChartTemplate(props) {
                         color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
                         {
                             offset: 0,
-                            color: Colors.getBlueChartColor(0.25)
+                            color: (isPositive ? Colors.getGreenChartColor(0.4) : Colors.getRedChartColor(0.4))
                         },
                         {
                             offset: 1,
-                            color: Colors.getBlueChartColor(0)
+                            color: (isPositive ? Colors.getGreenChartColor(0) : Colors.getRedChartColor(0))
                         }])
                       },
                       markLine: markLineJSON,

@@ -44,9 +44,14 @@ class FinancialModelingPrep:
         result = FinancialModelingPrep.fetch_json(url)
 
         # Data check
-        if "profile" not in result:
-            raise Exception("fetch_company_outlook(ticker_name:"+ticker_name+") failed data check")
-        
+        try:
+            test = result["profile"]
+        except Exception as e:
+            raise Exception("Data check error: fetch_company_outlook. " +
+                            "ticker_name: " + str(ticker_name) + 
+                            ", args: " + str(args) +
+                            ", result: " + str(result))
+
         return result
 
     def fetch_company_key_metrics(ticker_name:str) -> dict:
@@ -57,9 +62,14 @@ class FinancialModelingPrep:
         result = FinancialModelingPrep.fetch_json(url)
 
         # Data check
-        if "revenuePerShareTTM" not in result[0]:
-            raise Exception("fetch_company_key_metrics(ticker_name:"+ticker_name+") failed data check")
-        
+        try:
+            test = result[0]["revenuePerShareTTM"]
+        except Exception as e:
+            raise Exception("Data check error: fetch_company_key_metrics. " +
+                            "ticker_name: " + str(ticker_name) + 
+                            ", args: " + str(args) +
+                            ", result: " + str(result))
+
         return result
 
     def fetch_income_statement(ticker_name:str) -> dict:
@@ -72,8 +82,13 @@ class FinancialModelingPrep:
         result = FinancialModelingPrep.fetch_json(url)
 
         # Data check
-        if not result[0]["date"]:
-            raise Exception("fetch_income_statement(ticker_name:"+ticker_name+") failed data check")
+        try:
+            test = result[0]["date"]
+        except Exception as e:
+            raise Exception("Data check error: fetch_income_statement. " +
+                            "ticker_name: " + str(ticker_name) + 
+                            ", args: " + str(args) +
+                            ", result: " + str(result))
         
         return result
 
@@ -87,8 +102,13 @@ class FinancialModelingPrep:
         result = FinancialModelingPrep.fetch_json(url)
 
         # Data check
-        if not result[0]["date"]:
-            raise Exception("fetch_balance_sheet_statement(ticker_name:"+ticker_name+") failed data check")
+        try:
+            test = result[0]["date"]
+        except Exception as e:
+            raise Exception("Data check error: fetch_balance_sheet_statement. " +
+                            "ticker_name: " + str(ticker_name) + 
+                            ", args: " + str(args) +
+                            ", result: " + str(result))
         
         return result
     
@@ -102,9 +122,14 @@ class FinancialModelingPrep:
         result = FinancialModelingPrep.fetch_json(url)
 
         # Data check
-        if not result[0]["date"]:
-            raise Exception("fetch_cash_flow_statement(ticker_name:"+ticker_name+") failed data check")
-        
+        try:
+            test = result[0]["date"]
+        except Exception as e:
+            raise Exception("Data check error: fetch_cash_flow_statement. " +
+                            "ticker_name: " + str(ticker_name) + 
+                            ", args: " + str(args) +
+                            ", result: " + str(result))
+
         return result
 
     def fetch_stock_intraday(ticker_name:str) -> dict:
@@ -115,8 +140,13 @@ class FinancialModelingPrep:
         result = FinancialModelingPrep.fetch_json(url)
 
         # Data check
-        if not result[0]["date"]:
-            raise Exception("fetch_stock_intraday(ticker_name:"+ticker_name+") failed data check")
+        try:
+            test = result[0]["date"]
+        except Exception as e:
+            raise Exception("Data check error: fetch_stock_intraday. " +
+                            "ticker_name: " + str(ticker_name) + 
+                            ", args: " + str(args) +
+                            ", result: " + str(result))
         
         return result
     
@@ -128,8 +158,13 @@ class FinancialModelingPrep:
         result = FinancialModelingPrep.fetch_json(url)
 
         # Data check
-        if not result[0]["date"]:
-            raise Exception("fetch_stock_5min(ticker_name:"+ticker_name+") failed data check")
+        try:
+            test = result[0]["date"]
+        except Exception as e:
+            raise Exception("Data check error: fetch_stock_5min. " +
+                            "ticker_name: " + str(ticker_name) + 
+                            ", args: " + str(args) +
+                            ", result: " + str(result))
         
         return result
 
@@ -141,8 +176,13 @@ class FinancialModelingPrep:
         result = FinancialModelingPrep.fetch_json(url)
 
         # Data check
-        if not result["historical"][0]["date"]:
-            raise Exception("fetch_stock_daily(ticker_name:"+ticker_name+") failed data check")
+        try:
+            test = result["historical"][0]["date"]
+        except Exception as e:
+            raise Exception("Data check error: fetch_stock_daily. " +
+                            "ticker_name: " + str(ticker_name) + 
+                            ", args: " + str(args) +
+                            ", result: " + str(result))
         
         return result
     
@@ -155,8 +195,13 @@ class FinancialModelingPrep:
         result = FinancialModelingPrep.fetch_json(url)
 
         # Data check
-        if not result[0]["symbol"]:
-            raise Exception("fetch_indexes_prices failed data check")
+        try:
+            test = result[0]["symbol"]
+        except Exception as e:
+            raise Exception("Data check error: fetch_indexes_prices. " +
+                            "arg: " + str(arg) + 
+                            ", args: " + str(args) +
+                            ", result: " + str(result))
         
         return result
     
@@ -171,7 +216,12 @@ class FinancialModelingPrep:
         result = FinancialModelingPrep.fetch_json(url)
 
         # Data check
-        if not result[0]["symbol"]:
-            raise Exception("fetch_stock_price_target_consensus(ticker_name:"+ticker_name+") failed data check")
-        
+        try:
+            test = result[0]["symbol"]
+        except Exception as e:
+            raise Exception("Data check error: fetch_stock_price_target_consensus. " +
+                            "ticker_name: " + str(ticker_name) + 
+                            ", args: " + str(args) +
+                            ", result: " + str(result))
+            
         return result

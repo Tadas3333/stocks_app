@@ -31,7 +31,7 @@ export default function LineForecastChartTemplate(props) {
 
         if(from === to) {
           lineType = "solid";
-          lineWidth = 2.5;
+          lineWidth = 2.75;
           itemClr = Colors.getBlueChartColor();
         } else {
           itemClr = Colors.getDarkRedChartColor();
@@ -263,7 +263,7 @@ export default function LineForecastChartTemplate(props) {
                         color: Colors.getBlueChartColor()
                       },
                       lineStyle: {
-                        width: 2.5
+                        width: 2.75
                       },
                       emphasis: {
                         disabled: true
@@ -272,7 +272,7 @@ export default function LineForecastChartTemplate(props) {
                         color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
                         {
                             offset: 0,
-                            color: Colors.getBlueChartColor(0.25)
+                            color: Colors.getBlueChartColor(0.4)
                         },
                         {
                             offset: 1,
