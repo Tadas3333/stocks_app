@@ -276,7 +276,7 @@ export default function LineForecastChartTemplate(props) {
                         },
                         {
                             offset: 1,
-                            color: Colors.getBlueChartColor(0)
+                            color: Colors.getBlueChartColor(0.1)
                         }])
                       },
                       symbol:'circle',

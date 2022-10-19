@@ -217,7 +217,7 @@ export default function SimpleTickerChartTemplate(props) {
                         },
                         {
                             offset: 1,
-                            color: (isPositive ? Colors.getGreenChartColor(0) : Colors.getRedChartColor(0))
+                            color: (isPositive ? Colors.getGreenChartColor(0.1) : Colors.getRedChartColor(0.1))
                         }])
                       },
                       markLine: markLineJSON,
