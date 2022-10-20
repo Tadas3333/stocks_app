@@ -225,3 +225,23 @@ class FinancialModelingPrep:
                             ", result: " + str(result))
             
         return result
+
+    def fetch_stock_price_target(ticker_name:str) -> dict:
+        ticker_name = FinancialModelingPrep.prepare_ticker_name(ticker_name)
+
+        args = {
+            "symbol": ticker_name
+        }
+
+        url = FinancialModelingPrep.get_url("v4/price-target", args)
+        result = FinancialModelingPrep.fetch_json(url)
+
+        # Data check
+        try:
+            test = result[0]["symbol"]
+        except Exception as e:
+            raise Exception("Data check error: fetch_stock_price_target. " +
+                            "ticker_name: " + str(ticker_name) + 
+                            ", args: " + str(args) +
+                            ", result: " + str(result))
+        return result

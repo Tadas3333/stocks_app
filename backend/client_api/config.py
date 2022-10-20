@@ -86,5 +86,10 @@ class ClientAPIConfig:
             CLIENT_API_ROUTE: "get_stock_price_target_consensus",
             PROCESSED_DATA_NAME: "STOCK_PRICE_TARGET_CONSENSUS",
             DATA_API_UPDATE_ROUTE: "update_stock_price_target_consensus"
+        },
+        {
+            CLIENT_API_ROUTE: "get_stock_price_target",
+            PROCESSED_DATA_NAME: "STOCK_PRICE_TARGET",
+            DATA_API_UPDATE_ROUTE: "update_stock_price_target"
         }
     ]

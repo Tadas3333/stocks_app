@@ -58,26 +58,21 @@ export default function PriceTargetChart(props) {
 
 	return (
 		<>
-        <div className="row">
-            <div className="col-6">
-                {
-                        !Util.isNull(chartData) && !Util.isNull(chartData.futureValues) 
-                        ?
-                        (
-                            chartData.futureValues.length > 0
-                            ?
-                            <LineForecastChartTemplate 
-                            data={chartData}
-                            />
-                            :
-                            <>There are no price targets available for this ticker symbol</>
-                        ) 
-                        :
-                        <></>
-                }
-
-            </div>
-        </div>
+        {
+                !Util.isNull(chartData) && !Util.isNull(chartData.futureValues) 
+                ?
+                (
+                    chartData.futureValues.length > 0
+                    ?
+                    <LineForecastChartTemplate 
+                    data={chartData}
+                    />
+                    :
+                    <>There are no price targets available for this ticker symbol</>
+                ) 
+                :
+                <></>
+        }
         </>
         );
 }

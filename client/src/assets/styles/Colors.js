@@ -1,12 +1,12 @@
 import Util from 'util/Util';
 
 export default class Colors {
-    static blueChartColor = "0,119,238";
+    static blueChartColor = "26,121,216";
     static moreDarkBlueChartColor = "0,40,80";
 
     static lightRedChartColor = "249,231,234";
-    static redChartColor = "219,67,82";
-    static darkRedChartColor = "204,48,64";
+    static redChartColor = "206,64,78";
+    static darkRedChartColor = "186,58,71";
 
     static lightGreenChartColor = "229,244,236";
     static greenChartColor = "26,164,90";
