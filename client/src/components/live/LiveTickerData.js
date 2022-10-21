@@ -33,11 +33,13 @@ export default function LiveTickerData(props) {
 
     var icon;
     var colorClass = "";
+    var tickerPriceChange = props.tickerData.tickerPriceChange;
+    var tickerPriceChangePercentage = props.tickerData.tickerPriceChangePercentage;
     if(props.tickerData.tickerPriceChange >= 0) {
         icon = <FontAwesomeIcon icon={faArrowUp} transform="shrink-3"/>;
         colorClass = "color-positive";
-        props.tickerData.tickerPriceChange = "+" + props.tickerData.tickerPriceChange;
-        props.tickerData.tickerPriceChangePercentage = "+" + props.tickerData.tickerPriceChangePercentage;
+        tickerPriceChange = "+" + props.tickerData.tickerPriceChange;
+        tickerPriceChangePercentage = "+" + props.tickerData.tickerPriceChangePercentage;
     } else{
         icon = <FontAwesomeIcon icon={faArrowDown} transform="shrink-3"/>;
         colorClass = "color-negative";
@@ -53,7 +55,7 @@ export default function LiveTickerData(props) {
             <div className="live-ticker-data-section-currency">{props.tickerData.tickerCurrencySymbol}</div> 
         </div>
         <div className="live-ticker-data-section-price-change">
-                <span className={colorClass}>{icon} {props.tickerData.tickerPriceChange} ({props.tickerData.tickerPriceChangePercentage}%)</span>
+                <span className={colorClass}>{icon} {tickerPriceChange} ({tickerPriceChangePercentage}%)</span>
         </div>
         <div className="mt-2 text-end font-size-12">
             Last Updated: August 26 04:00PM EDT
@@ -61,7 +63,7 @@ export default function LiveTickerData(props) {
         <div className="text-end font-size-12">
             Previous Close: 
             <span className="px-1">{props.tickerData.tickerCurrencySymbol}{props.tickerData.tickerPrice}</span>
-            <span className={colorClass}>{icon} {props.tickerData.tickerPriceChange} ({props.tickerData.tickerPriceChangePercentage}%)</span>
+            <span className={colorClass}>{icon} {tickerPriceChange} ({tickerPriceChangePercentage}%)</span>
         </div>
         </>
     );

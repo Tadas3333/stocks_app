@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-import LineForecastChartTemplate from "components/chart_templates/LineForecastChartTemplate"
+import LineTargetForecastChartTemplate from "components/chart_templates/LineTargetForecastChartTemplate"
 import useStockHistoricalPriceData from 'data/stock/StockHistoricalPriceData'
 import useStockPriceTargetConsensusData from 'data/stock/StockPriceTargetConsensusData'
 import Util from 'util/Util';
@@ -64,7 +64,7 @@ export default function PriceTargetChart(props) {
                 (
                     chartData.futureValues.length > 0
                     ?
-                    <LineForecastChartTemplate 
+                    <LineTargetForecastChartTemplate 
                     data={chartData}
                     />
                     :

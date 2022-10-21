@@ -3,9 +3,9 @@ import Util from "util/Util"
 import ReactEcharts from "echarts-for-react"
 import Colors from "assets/styles/Colors"
 import Main from "assets/styles/Main"
-import './LineForecastChartTemplate.scss'
+import './LineTargetForecastChartTemplate.scss'
 
-export default function LineForecastChartTemplate(props) {
+export default function LineSeriesForecastChartTemplate(props) {
     const [option, setOption] = useState({});
 
     const getForecastLineStyle = (from, to, isMinValue) => {
@@ -332,7 +332,7 @@ export default function LineForecastChartTemplate(props) {
     }, [props.data]);
 
 	return (
-        <div className="line-forecast-chart-template">
+        <div className="line-series-forecast-chart-template">
           <ReactEcharts option={option} 
                         style={{height: '100%', width: '100%'}}
                         notMerge={true}

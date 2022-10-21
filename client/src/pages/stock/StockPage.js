@@ -7,7 +7,7 @@ import useStockOverviewData from 'data/stock/StockOverviewData'
 import LiveTickerData from 'components/live/LiveTickerData'
 import LiveTickerRangesData from 'components/live/LiveTickerRangesData'
 import LiveTickerChart from 'components/live/LiveTickerChart'
-import PageTopTickerName from 'components/ticker/PageTopTickerName'
+import PageTopTickerName from 'components/data_visuals/page_top_ticker_name/PageTopTickerName'
 import Util from 'util/Util';
 
 export default function StockPage() {
