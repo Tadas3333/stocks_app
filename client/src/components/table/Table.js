@@ -15,7 +15,7 @@ export default function Table(props) {
                     <tr>
                         {Util.nvl(props.headerColumns, []).map(
                             (headerColumn, index) => 
-                                <th key={index}>{headerColumn}</th>
+                                <th key={index}>{headerColumn.content}</th>
                             )
                         }
                     </tr>

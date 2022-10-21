@@ -1,4 +1,7 @@
 import { useState, useEffect } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowDown, 
+         faArrowUp} from '@fortawesome/free-solid-svg-icons'
 import useStockPriceTargetData from 'data/stock/StockPriceTargetData'
 import Util from 'util/Util';
 import Table from "components/table/Table"
@@ -9,10 +12,28 @@ export default function PriceTargetAnalysts(props) {
 
     useEffect(() => {
         try {
-            if(!Util.isNull(priceData)) {
+            if(!Util.isNull(priceData) && !Util.isNull(props.tickerData.tickerSymbol)) {
                 var rows = [];
 
                 for(var i=0; i < priceData.length; i++) {
+                    var percentageUpsideDownside = 
+                        Util.roundFloatDecimals(Util.getPercentageChange(priceData[i].priceTarget,
+                                                            props.tickerData.tickerPrice), 2);
+                    
+                    if(percentageUpsideDownside >= 0.0) {
+                        percentageUpsideDownside = 
+                            <span className="color-positive font-weight-500">
+                                <FontAwesomeIcon icon={faArrowUp} transform="shrink-3"/>
+                                <span className="ps-1">+{percentageUpsideDownside}%</span>
+                            </span>;
+                    } else {
+                        percentageUpsideDownside = 
+                            <span className="color-negative font-weight-500">
+                                <FontAwesomeIcon icon={faArrowDown} transform="shrink-3"/>
+                                <span className="ps-1">{percentageUpsideDownside}%</span>
+                            </span>;
+                    }
+
                     rows.push(
                         {
                             columns: 
@@ -21,16 +42,20 @@ export default function PriceTargetAnalysts(props) {
                                             {
                                               (!Util.isNull(priceData[i].analystName)
                                               ?
-                                              <>{priceData[i].analystName}<br/>{priceData[i].analystCompany}</>
+                                              <>
+                                                <span className="color-grey-700">{priceData[i].analystName}</span><br/>
+                                                <span className="font-weight-500">{priceData[i].analystCompany}</span>
+                                              </>
                                               :
-                                              <>{priceData[i].analystCompany}</>
+                                                <span className="font-weight-500">{priceData[i].analystCompany}</span>
                                               )
                                             }
                                         </>}, 
-                                {content: <>{props.tickerData.tickerCurrencySymbol}
+                                {content: <span className="font-weight-500">
+                                            {props.tickerData.tickerCurrencySymbol}
                                             {priceData[i].priceTarget}
-                                          </>}, 
-                                {content: <>+100%</>},
+                                          </span>}, 
+                                {content: percentageUpsideDownside},
                                 {content: <>{priceData[i].date}</>}
                             ]
                         }
@@ -41,16 +66,16 @@ export default function PriceTargetAnalysts(props) {
         } catch(err) {
             console.log(err);
         };
-    }, [priceData, props.tickerData.tickerCurrencySymbol]);
+    }, [priceData, props.tickerData]);
 
 	return (
             <Table 
             maxHeight="300px"
             headerColumns={
-                ["Name / Company", 
-                 "Price Target", 
-                 "Upside / Downside", 
-                 "Date"]}
+                [{content: <>Name / Company</>}, 
+                 {content: <>Price Target</>}, 
+                 {content: <>Upside / Downside</>}, 
+                 {content: <>Date</>}]}
             rows={tableRows}
             />
         );

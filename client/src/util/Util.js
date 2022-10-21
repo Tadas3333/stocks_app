@@ -112,4 +112,18 @@ export default class Util {
         var split = symbol.split("-", 2);
         return split[split.length-1];
     }
+
+    static roundFloatDecimals(value, decimals) {
+        if(Util.isNull(value) || Util.isNull(decimals)) {
+            return "";
+        }
+
+        var parsedFloat = parseFloat(value);
+
+        if(Util.isNull(parsedFloat)) {
+            return "";
+        }
+
+        return parsedFloat.toFixed(decimals);
+    }
 }
