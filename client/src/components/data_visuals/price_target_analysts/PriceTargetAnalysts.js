@@ -4,7 +4,7 @@ import Util from 'util/Util';
 import Table from "components/table/Table"
 
 export default function PriceTargetAnalysts(props) {
-    const priceData = useStockPriceTargetData(props.tickerSymbol);
+    const priceData = useStockPriceTargetData(props.tickerData.tickerSymbol);
     const [tableRows, setTableRows] = useState([])
 
     useEffect(() => {
@@ -27,7 +27,9 @@ export default function PriceTargetAnalysts(props) {
                                               )
                                             }
                                         </>}, 
-                                {content: <>{priceData[i].priceTarget}</>}, 
+                                {content: <>{props.tickerData.tickerCurrencySymbol}
+                                            {priceData[i].priceTarget}
+                                          </>}, 
                                 {content: <>+100%</>},
                                 {content: <>{priceData[i].date}</>}
                             ]
@@ -39,10 +41,11 @@ export default function PriceTargetAnalysts(props) {
         } catch(err) {
             console.log(err);
         };
-    }, [priceData]);
+    }, [priceData, props.tickerData.tickerCurrencySymbol]);
 
 	return (
             <Table 
+            maxHeight="300px"
             headerColumns={
                 ["Name / Company", 
                  "Price Target", 

@@ -1,0 +1,14 @@
+@import "assets/styles/Colors.scss";
+
+.table-comp {
+    width: 100%;
+}
+
+.table-comp th {
+    background-color: $grey-150-color;
+}
+
+.table-comp th, .table-comp td {
+    padding: 10px 5px 10px 5px;
+    border-bottom: 1px solid $grey-200-color;
+}

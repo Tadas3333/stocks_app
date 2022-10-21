@@ -22,7 +22,7 @@ export default function StockFinancialsSubPage(props) {
             </div>
             <div className="row mt-3">
                 <div className="col">
-                    <StockFinancialsRoutes tickerSymbol={props.tickerSymbol}/>
+                    <StockFinancialsRoutes tickerData={props.tickerData}/>
                 </div>
             </div>
         </>

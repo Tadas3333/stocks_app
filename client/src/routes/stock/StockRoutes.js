@@ -10,14 +10,13 @@ export default function StockRoutes(props) {
         {
         <Routes>
             <Route path="summary" 
-                   element={<StockSummarySubPage tickerSymbol={props.tickerSymbol} 
-                                               overviewData={props.overviewData} />} />
+                   element={<StockSummarySubPage tickerData={props.tickerData} />} />
             <Route path="analysis" 
-                   element={<StockAnalysisSubPage tickerSymbol={props.tickerSymbol} />} />
+                   element={<StockAnalysisSubPage tickerData={props.tickerData} />} />
             <Route path="forecast" 
-                   element={<StockForecastSubPage tickerSymbol={props.tickerSymbol} />} />
+                   element={<StockForecastSubPage tickerData={props.tickerData}/>} />
             <Route path="financials/*" 
-                   element={<StockFinancialsSubPage tickerSymbol={props.tickerSymbol} />} />
+                   element={<StockFinancialsSubPage tickerData={props.tickerData}/>} />
             <Route path="*" 
                     element={<Navigate replace to="/404"/>} />
         </Routes>}

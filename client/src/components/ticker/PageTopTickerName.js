@@ -2,9 +2,8 @@ import './PageTopTickerName.scss'
 import Util from 'util/Util'
 
 export default function PageTopTickerName(props) {
-	if(Util.isNull(props.tickerSymbol) || Util.isNull(props.overviewData) ||
-	   Util.isNull(props.overviewData["name"])) {
-	   return (<></>); //Loading
+	if(Util.isNull(props.tickerData.tickerSymbol)) {
+	   return (<></>);
 	}
 
 	return (
@@ -12,14 +11,15 @@ export default function PageTopTickerName(props) {
 		<div className="row">
 			<div className="col">
 				<div className="d-flex align-items-center page-top-ticker-name-wrap">
-					<img src={props.overviewData["image"]} alt={props.overviewData["name"]} className="page-top-ticker-name-image"></img>
-					<div className="ms-3 page-top-ticker-name">{props.overviewData["name"]}</div>
-					<div className="ms-3 font-size-14">{props.overviewData["exchange"]}:</div>
-					<div className="ms-2 font-weight-600 font-size-14">{Util.removeExchange(props.tickerSymbol)}</div>
+					<img src={props.tickerData.tickerOverview.image} 
+							 alt={props.tickerData.tickerName} className="page-top-ticker-name-image"></img>
+					<div className="ms-3 page-top-ticker-name">{props.tickerData.tickerName}</div>
+					<div className="ms-3 font-size-14">{props.tickerData.tickerOverview.exchange}:</div>
+					<div className="ms-2 font-weight-600 font-size-14">{props.tickerData.tickerSymbolNoExchange}</div>
 					<div className="ms-3 font-size-14">Market Cap:</div>
-					<div className="ms-2 font-weight-600 font-size-14">{Util.prettifyAmount(props.overviewData["marketCap"])}</div>
+					<div className="ms-2 font-weight-600 font-size-14">{Util.prettifyAmount(props.tickerData.tickerOverview.marketCap)}</div>
 					<div className="ms-3 font-size-14">Currency:</div>
-					<div className="ms-2 font-weight-600 font-size-14">{props.overviewData["currency"]}</div>
+					<div className="ms-2 font-weight-600 font-size-14">{props.tickerData.tickerCurrency}</div>
 				</div>
 			</div>
 		</div>

@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { useState, useEffect } from 'react';
+import { useState, useEffect} from 'react';
 import { faNewspaper, faListCheck, faFileInvoiceDollar, faArrowTrendUp } from '@fortawesome/free-solid-svg-icons'
 import TickerPageLayout from 'layouts/ticker/TickerPageLayout'
 import StockRoutes from 'routes/stock/StockRoutes'
@@ -14,32 +14,63 @@ export default function StockPage() {
 	var params = useParams();
 	const [tickerSymbol, setTickerSymbol] = useState();
 	const overviewData = useStockOverviewData(tickerSymbol);
+	const [tickerData, setTickerData] = useState({
+		tickerSymbol: null,
+		tickerSymbolNoExchange: null,
+		tickerName: null,
+		tickerCurrency: null,
+		tickerCurrencySymbol: null,
+		tickerPrice: null,
+		tickerPriceChange: null,
+		tickerPriceChangePercentage: null,
+		tickerOverview: null
+	});
 
 	useEffect(() =>
 	{
 		setTickerSymbol(Util.prepareTickerSymbol(params.exchange, params.symbol));
 	}, [params]);
+
+	useEffect(() =>
+	{
+		if(!Util.isNull(tickerSymbol) && 
+		   !Util.isNull(overviewData) && 
+		   !Util.isNull(overviewData.currency)) {
+			
+			setTickerData({
+				tickerSymbol: tickerSymbol,
+				tickerSymbolNoExchange: Util.removeExchange(tickerSymbol),
+				tickerName: overviewData.name,
+				tickerCurrency: overviewData.currency,
+				tickerCurrencySymbol: Util.getCurrencySymbol(overviewData.currency),
+				tickerPrice: overviewData.price,
+				tickerPriceChange: overviewData.priceChange,
+				tickerPriceChangePercentage: overviewData.priceChangePercentage,
+				tickerOverview: overviewData
+			});
+		}
+	}, [tickerSymbol, overviewData]);
 	
 	return (
 		<TickerPageLayout 
 			tickerName=
 			{
-				<PageTopTickerName tickerSymbol={tickerSymbol} overviewData={overviewData}/>
+				<PageTopTickerName tickerData={tickerData}/>
 			}
 
 			tickerData=
 			{
-				<LiveTickerData overviewData={overviewData}/>
+				<LiveTickerData tickerData={tickerData}/>
 			}
 
 			tickerChart=
 			{
-				<LiveTickerChart tickerSymbol={tickerSymbol} overviewData={overviewData}/>
+				<LiveTickerChart tickerData={tickerData}/>
 			}
 
 			tickerRangesData=
 			{
-				<LiveTickerRangesData tickerSymbol={tickerSymbol} overviewData={overviewData}/>
+				<LiveTickerRangesData tickerData={tickerData}/>
 			}
 
 			subPageLinks=
@@ -70,7 +101,7 @@ export default function StockPage() {
 
 			subPageRoutes=
 			{
-				<StockRoutes tickerSymbol={tickerSymbol} overviewData={overviewData}/>
+				<StockRoutes tickerData={tickerData}/>
 			}
 		/>
 	)

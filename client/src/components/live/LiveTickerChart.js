@@ -1,13 +1,12 @@
 import './LiveTickerChart.scss'
 import {useEffect, useState} from 'react'
-import Util from 'util/Util'
 import useStockHistoricalPriceData from 'data/stock/StockHistoricalPriceData'
 import SimpleTickerChartTemplate from 'components/chart_templates/SimpleTickerChartTemplate'
 import $ from 'jquery';
 
 export default function TickerChart(props) {
     const [chartType, setChartType] = useState("1D");
-    const data = useStockHistoricalPriceData(props.tickerSymbol, chartType);
+    const data = useStockHistoricalPriceData(props.tickerData.tickerSymbol, chartType);
 
     useEffect(() => {
             $(".live-ticker-chart-navigation-button").removeClass("live-ticker-chart-navigation-button-active");
@@ -59,7 +58,7 @@ export default function TickerChart(props) {
             </div>
 
             <SimpleTickerChartTemplate data={data}
-                                       currency={Util.nvl_json(props.overviewData, "currency", null)}/>
+                                       currency={props.tickerData.tickerCurrency}/>
 		</>
 	);
 }

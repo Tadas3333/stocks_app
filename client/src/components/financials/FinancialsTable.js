@@ -5,7 +5,7 @@ import BarsChartTemplate from "../chart_templates/BarsChartTemplate"
 import Util from "util/Util"
 
 export default function FinancialsTable(props) {
-    const data = useStockFinancialsData(props.tickerSymbol, props.dataType);
+    const data = useStockFinancialsData(props.tickerData.tickerSymbol, props.dataType);
     const [rows, setRows] = useState([]);
     const chartCategories = useRef([]);
     const chartData = useRef([]);

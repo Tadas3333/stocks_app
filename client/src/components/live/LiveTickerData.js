@@ -8,14 +8,9 @@ import Util from "util/Util"
 import './LiveTickerData.scss'
 
 export default function LiveTickerData(props) {
-    if(Util.isNull(props.overviewData) ||Util.isNull(props.overviewData["price"])) {
+    if(Util.isNull(props.tickerData.tickerSymbol)) {
         return (<></>);
     }
-
-    var currentPrice = props.overviewData["price"];
-    var priceChange = props.overviewData["priceChange"];
-    var priceChangePercentage = props.overviewData["priceChangePercentage"];
-    var currency = Util.getCurrencySymbol(props.overviewData["currency"]);
     var marketStatusID = 2;
     var marketStatus = "";
     var marketStatusIcon;
@@ -38,11 +33,11 @@ export default function LiveTickerData(props) {
 
     var icon;
     var colorClass = "";
-    if(priceChange >= 0) {
+    if(props.tickerData.tickerPriceChange >= 0) {
         icon = <FontAwesomeIcon icon={faArrowUp} transform="shrink-3"/>;
         colorClass = "color-positive";
-        priceChange = "+" + priceChange;
-        priceChangePercentage = "+" + priceChangePercentage;
+        props.tickerData.tickerPriceChange = "+" + props.tickerData.tickerPriceChange;
+        props.tickerData.tickerPriceChangePercentage = "+" + props.tickerData.tickerPriceChangePercentage;
     } else{
         icon = <FontAwesomeIcon icon={faArrowDown} transform="shrink-3"/>;
         colorClass = "color-negative";
@@ -54,19 +49,19 @@ export default function LiveTickerData(props) {
             <span className="live-ticker-data-section-market-status-icon">{marketStatusIcon}</span> {marketStatus}
         </div>
         <div className="live-ticker-data-section">
-            <div className="liver-ticker-data-price">{currentPrice}</div>
-            <div className="live-ticker-data-section-currency">{currency}</div> 
+            <div className="liver-ticker-data-price">{props.tickerData.tickerPrice}</div>
+            <div className="live-ticker-data-section-currency">{props.tickerData.tickerCurrencySymbol}</div> 
         </div>
         <div className="live-ticker-data-section-price-change">
-                <span className={colorClass}>{icon} {priceChange} ({priceChangePercentage}%)</span>
+                <span className={colorClass}>{icon} {props.tickerData.tickerPriceChange} ({props.tickerData.tickerPriceChangePercentage}%)</span>
         </div>
         <div className="mt-2 text-end font-size-12">
             Last Updated: August 26 04:00PM EDT
         </div>
         <div className="text-end font-size-12">
             Previous Close: 
-            <span className="px-1">{currency}{currentPrice}</span>
-            <span className={colorClass}>{icon} {priceChange} ({priceChangePercentage}%)</span>
+            <span className="px-1">{props.tickerData.tickerCurrencySymbol}{props.tickerData.tickerPrice}</span>
+            <span className={colorClass}>{icon} {props.tickerData.tickerPriceChange} ({props.tickerData.tickerPriceChangePercentage}%)</span>
         </div>
         </>
     );
