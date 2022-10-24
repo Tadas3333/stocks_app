@@ -76,30 +76,30 @@ class ChartsDailyProcessing:
             "lastClosePrice" : lastClosePrice,
             "minValue": minValue,
             "maxValue": maxValue,
-            "data": result
+            "values": result
         }
         
         return result
 
-    def get_stock_1month(data:dict):
+    def get_stock_1month_chart(data:dict):
         return ChartsDailyProcessing.get_daily_prices_in_interval(data, interval="1month")
 
-    def get_stock_3months(data:dict):
+    def get_stock_3months_chart(data:dict):
         return ChartsDailyProcessing.get_daily_prices_in_interval(data, interval="3months")
 
-    def get_stock_6months(data:dict):
+    def get_stock_6months_chart(data:dict):
         return ChartsDailyProcessing.get_daily_prices_in_interval(data, interval="6months")
 
-    def get_stock_ytd(data:dict):
+    def get_stock_ytd_chart(data:dict):
         return ChartsDailyProcessing.get_daily_prices_in_interval(data, interval="ytd")
 
-    def get_stock_1year(data:dict):
+    def get_stock_1year_chart(data:dict):
         return ChartsDailyProcessing.get_daily_prices_in_interval(data, interval="1year")
 
-    def get_stock_3years(data:dict):
+    def get_stock_3years_chart(data:dict):
         return ChartsDailyProcessing.get_daily_prices_in_interval(data, interval="3years")
 
-    def get_stock_5years(data:dict):
+    def get_stock_5years_chart(data:dict):
         return ChartsDailyProcessing.get_daily_prices_in_interval(data, interval="5years")
 
 

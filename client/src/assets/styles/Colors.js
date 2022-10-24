@@ -5,12 +5,12 @@ export default class Colors {
     static moreDarkBlueChartColor = "0,40,80";
 
     static lightRedChartColor = "249,231,234";
-    static redChartColor = "206,64,78";
+    static redChartColor = "207,74,88";
     static darkRedChartColor = "186,58,71";
 
     static lightGreenChartColor = "229,244,236";
-    static greenChartColor = "26,164,90";
-    static darkGreenChartColor = "29,146,78";
+    static greenChartColor = "63,173,107";
+    static darkGreenChartColor = "57,157,97";
 
     static orangeChartColor = "225,93,45";
     static yellowChartColor = "238,191,51";

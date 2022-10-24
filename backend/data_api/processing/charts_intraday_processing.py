@@ -3,7 +3,7 @@ from common.time import Time
 from datetime import datetime, timedelta
 
 class ChartsIntradayProcessing:
-    def get_stock_intraday(data:dict, interval_mins=1):
+    def get_stock_intraday_chart(data:dict, interval_mins=1):
         result = []
 
         if data is None:
@@ -72,7 +72,7 @@ class ChartsIntradayProcessing:
             "lastClosePrice" : analyzed_data["lastClose"],
             "minValue": analyzed_data["minValue"],
             "maxValue": analyzed_data["maxValue"],
-            "data": result
+            "values": result
         }
         
         return result

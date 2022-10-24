@@ -3,7 +3,7 @@ from datetime import datetime, timedelta
 from processing.charts_intraday_processing import ChartsIntradayProcessing
 
 class Charts5DaysProcessing:
-    def get_stock_5days(data:dict):
+    def get_stock_5days_chart(data:dict):
         result = []
 
         if data is None:
@@ -23,13 +23,13 @@ class Charts5DaysProcessing:
             }]
         
         # Prepare the lastest market open day chart and join two charts
-        result = result + ChartsIntradayProcessing.get_stock_intraday(analyzed_data["latestDayData"], interval_mins=5)["data"]
+        result = result + ChartsIntradayProcessing.get_stock_intraday_chart(analyzed_data["latestDayData"], interval_mins=5)["values"]
 
         result = {
             "lastClosePrice" : analyzed_data["lastClose"],
             "minValue": analyzed_data["minValue"],
             "maxValue": analyzed_data["maxValue"],
-            "data": result
+            "values": result
         }
         
         return result

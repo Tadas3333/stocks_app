@@ -10,19 +10,19 @@ export default function SimpleTickerChartTemplate(props) {
 
     useEffect(() => {
       try {
-          if(!Util.isNull(props.data) && !Util.isNull(props.data["data"])) {
+          if(!Util.isNull(props.data) && !Util.isNull(props.data["values"])) {
             var t_labels = [];
             var t_data = [];
             var t_volume = [];
             var lastClosePrice = props.data["lastClosePrice"];
             var crncy = Util.getCurrencySymbol(props.currency);
 
-            for(var i = 0; i < props.data["data"].length; i++) {
-                t_labels.push(props.data["data"][i]["category"]);
+            for(var i = 0; i < props.data["values"].length; i++) {
+                t_labels.push(props.data["values"][i]["category"]);
 
-                if(props.data["data"][i]["value"]) {
-                  t_data.push(props.data["data"][i]["value"]);
-                  t_volume.push(props.data["data"][i]["volume"]);
+                if(props.data["values"][i]["value"]) {
+                  t_data.push(props.data["values"][i]["value"]);
+                  t_volume.push(props.data["values"][i]["volume"]);
                 }
             }
 

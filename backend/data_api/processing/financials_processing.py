@@ -2,13 +2,17 @@ from common.util import Util
 
 class FinancialsProcessing:
     def get_income_statement(data:dict):
-        result = {
-            "statements": []
-        }
+        result = {}
+
+        if data is None or "financialsAnnual" not in data or "income" not in data["financialsAnnual"] or \
+           data["financialsAnnual"]["income"] == []:
+           return result
+
+        statements = []
         
         for s in data["financialsAnnual"]["income"]:
-            result["statements"].append({
-                "-": s["date"][0:4] if "date" in s else None,
+            statements.append({
+                "Date": s["date"] if "date" in s else None,
                 "Revenue": s["revenue"] if "revenue" in s else None,
                 "Cost of Revenue": s["costOfRevenue"] if "costOfRevenue" in s else None,
                 "Gross Profit": s["grossProfit"] if "grossProfit" in s else None,
@@ -33,17 +37,24 @@ class FinancialsProcessing:
                 "Earnings Before Tax Margin": Util.two_decimal_float(s["incomeBeforeTaxRatio"]) if "incomeBeforeTaxRatio" in s else None
             })
 
-        result["statements"].reverse()
-        return result
+        statements.reverse()
+
+        return {
+            "statements": statements
+        }
 
     def get_balance_sheet_statement(data:dict):
-        result = {
-            "statements": []
-        }
+        result = {}
+
+        if data is None or "financialsAnnual" not in data or "balance" not in data["financialsAnnual"] or \
+           data["financialsAnnual"]["balance"] == []:
+           return result
+
+        statements = []
         
         for s in data["financialsAnnual"]["balance"]:
-            result["statements"].append({
-                "-": s["date"][0:4] if "date" in s else None,
+            statements.append({
+                "Date": s["date"] if "date" in s else None,
                 "Total Assets": s["totalAssets"] if "totalAssets" in s else None,
                 "Total Current Assets": s["totalCurrentAssets"] if "totalCurrentAssets" in s else None,
                 "- Total Current Assets": s["totalCurrentAssets"] if "totalCurrentAssets" in s else None,
@@ -74,17 +85,24 @@ class FinancialsProcessing:
                 "Net Debt": s["netDebt"] if "netDebt" in s else None
             })
 
-        result["statements"].reverse()
-        return result
+        statements.reverse()
+
+        return {
+            "statements": statements
+        }
 
     def get_cash_flow_statement(data:dict) -> dict:
-        result = {
-            "statements": []
-        }
+        result = {}
+
+        if data is None or "financialsAnnual" not in data or "cash" not in data["financialsAnnual"] or \
+           data["financialsAnnual"]["cash"] == []:
+           return result
+
+        statements = []
         
         for s in data["financialsAnnual"]["cash"]:
-            result["statements"].append({
-                "-": s["date"][0:4] if "date" in s else None,
+            statements.append({
+                "Date": s["date"] if "date" in s else None,
                 "Operating Cash Flow": s["operatingCashFlow"] if "operatingCashFlow" in s else None,
                 "- Net Income": s["netIncome"] if "netIncome" in s else None,
                 "- Depreciation & Amortization": s["depreciationAndAmortization"] if "depreciationAndAmortization" in s else None,
@@ -113,8 +131,10 @@ class FinancialsProcessing:
                 "Capital Expenditure": s["capitalExpenditure"] if "capitalExpenditure" in s else None,
                 "Net cash flow / Change in cash": s["netChangeInCash"] if "netChangeInCash" in s else None,
                 "Free Cash Flow": s["freeCashFlow"] if "freeCashFlow" in s else None
-
             })
 
-        result["statements"].reverse()
-        return result
+        statements.reverse()
+
+        return {
+            "statements": statements
+        }

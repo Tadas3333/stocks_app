@@ -38,7 +38,7 @@ export default function FinancialsTable(props) {
                 chartData.current = [];
     
                 for (var x = 0; x < statements.length; x++) {
-                    chartCategories.current.push(statements[x]["-"]);
+                    chartCategories.current.push(statements[x]["Date"]);
                 }
     
                 // Get json keys from array index 0

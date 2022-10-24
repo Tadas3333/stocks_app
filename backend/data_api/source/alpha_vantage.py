@@ -22,6 +22,7 @@ class AlphaVantage:
         return result
 
 
+    '''
     def company_overview(ticker_name:str) -> dict:
         args = {
             "symbol": ticker_name
@@ -46,4 +47,4 @@ class AlphaVantage:
         if not result["feed"]:
             raise Exception("get_market_news(ticker_name:"+ticker_name+") failed data check")
         
-        return result
+        return result'''

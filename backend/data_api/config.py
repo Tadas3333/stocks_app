@@ -51,7 +51,11 @@ class DataAPIConfig:
         {
             SOURCE_DATA_NAME: "STOCK_PRICE_TARGET",
             DATA_SOURCING_FUNCTION: FinancialModelingPrep.fetch_stock_price_target
-        }
+        },
+        {
+            SOURCE_DATA_NAME: "STOCK_ESTIMATES_YEARLY",
+            DATA_SOURCING_FUNCTION: FinancialModelingPrep.fetch_stock_estimates_yearly
+        } 
     ]
 
     # Processing config
@@ -77,40 +81,40 @@ class DataAPIConfig:
             DATA_PROCESSING_FUNCTION: FinancialsProcessing.get_cash_flow_statement
         },
         {
-            PROCESSED_DATA_NAME: "STOCK_INTRADAY",
-            DATA_PROCESSING_FUNCTION: ChartsIntradayProcessing.get_stock_intraday
+            PROCESSED_DATA_NAME: "STOCK_INTRADAY_CHART",
+            DATA_PROCESSING_FUNCTION: ChartsIntradayProcessing.get_stock_intraday_chart
         },
         {
-            PROCESSED_DATA_NAME: "STOCK_5DAYS",
-            DATA_PROCESSING_FUNCTION: Charts5DaysProcessing.get_stock_5days
+            PROCESSED_DATA_NAME: "STOCK_5DAYS_CHART",
+            DATA_PROCESSING_FUNCTION: Charts5DaysProcessing.get_stock_5days_chart
         },
         {
-            PROCESSED_DATA_NAME: "STOCK_1MONTH",
-            DATA_PROCESSING_FUNCTION: ChartsDailyProcessing.get_stock_1month
+            PROCESSED_DATA_NAME: "STOCK_1MONTH_CHART",
+            DATA_PROCESSING_FUNCTION: ChartsDailyProcessing.get_stock_1month_chart
         },
         {
-            PROCESSED_DATA_NAME: "STOCK_3MONTHS",
-            DATA_PROCESSING_FUNCTION: ChartsDailyProcessing.get_stock_3months
+            PROCESSED_DATA_NAME: "STOCK_3MONTHS_CHART",
+            DATA_PROCESSING_FUNCTION: ChartsDailyProcessing.get_stock_3months_chart
         },
         {
-            PROCESSED_DATA_NAME: "STOCK_6MONTHS",
-            DATA_PROCESSING_FUNCTION: ChartsDailyProcessing.get_stock_6months
+            PROCESSED_DATA_NAME: "STOCK_6MONTHS_CHART",
+            DATA_PROCESSING_FUNCTION: ChartsDailyProcessing.get_stock_6months_chart
         },
         {
-            PROCESSED_DATA_NAME: "STOCK_YTD",
-            DATA_PROCESSING_FUNCTION: ChartsDailyProcessing.get_stock_ytd
+            PROCESSED_DATA_NAME: "STOCK_YTD_CHART",
+            DATA_PROCESSING_FUNCTION: ChartsDailyProcessing.get_stock_ytd_chart
         },
         {
-            PROCESSED_DATA_NAME: "STOCK_1YEAR",
-            DATA_PROCESSING_FUNCTION: ChartsDailyProcessing.get_stock_1year
+            PROCESSED_DATA_NAME: "STOCK_1YEAR_CHART",
+            DATA_PROCESSING_FUNCTION: ChartsDailyProcessing.get_stock_1year_chart
         },
         {
-            PROCESSED_DATA_NAME: "STOCK_3YEARS",
-            DATA_PROCESSING_FUNCTION: ChartsDailyProcessing.get_stock_3years
+            PROCESSED_DATA_NAME: "STOCK_3YEARS_CHART",
+            DATA_PROCESSING_FUNCTION: ChartsDailyProcessing.get_stock_3years_chart
         },
         {
-            PROCESSED_DATA_NAME: "STOCK_5YEARS",
-            DATA_PROCESSING_FUNCTION: ChartsDailyProcessing.get_stock_5years
+            PROCESSED_DATA_NAME: "STOCK_5YEARS_CHART",
+            DATA_PROCESSING_FUNCTION: ChartsDailyProcessing.get_stock_5years_chart
         },
         {
             PROCESSED_DATA_NAME: "PRICES_OF_INDEXES",
@@ -123,6 +127,14 @@ class DataAPIConfig:
         {
             PROCESSED_DATA_NAME: "STOCK_PRICE_TARGET",
             DATA_PROCESSING_FUNCTION: ForecastProcessing.get_stock_price_target
+        },
+        {
+            PROCESSED_DATA_NAME: "STOCK_PRICE_FORECAST_CHART",
+            DATA_PROCESSING_FUNCTION: ForecastProcessing.get_stock_price_forecast_chart
+        },
+        {
+            PROCESSED_DATA_NAME: "STOCK_REVENUE_FORECAST_CHART",
+            DATA_PROCESSING_FUNCTION: ForecastProcessing.get_stock_revenue_forecast_chart
         }
     ]
 
@@ -154,49 +166,49 @@ class DataAPIConfig:
             PROCESSED_DATA_NAME: "CASH_FLOW_STATEMENT"
         },
         {
-            DATA_API_ROUTE: "update_stock_intraday",
+            DATA_API_ROUTE: "update_stock_intraday_chart",
             SOURCE_DATA_NAME: "STOCK_INTRADAY",
-            PROCESSED_DATA_NAME: "STOCK_INTRADAY"
+            PROCESSED_DATA_NAME: "STOCK_INTRADAY_CHART"
         },
         {
-            DATA_API_ROUTE: "update_stock_5days",
+            DATA_API_ROUTE: "update_stock_5days_chart",
             SOURCE_DATA_NAME: "STOCK_5MIN",
-            PROCESSED_DATA_NAME: "STOCK_5DAYS"
+            PROCESSED_DATA_NAME: "STOCK_5DAYS_CHART"
         },
         {
-            DATA_API_ROUTE: "update_stock_1month",
+            DATA_API_ROUTE: "update_stock_1month_chart",
             SOURCE_DATA_NAME: "STOCK_DAILY",
-            PROCESSED_DATA_NAME: "STOCK_1MONTH"
+            PROCESSED_DATA_NAME: "STOCK_1MONTH_CHART"
         },
         {
-            DATA_API_ROUTE: "update_stock_3months",
+            DATA_API_ROUTE: "update_stock_3months_chart",
             SOURCE_DATA_NAME: "STOCK_DAILY",
-            PROCESSED_DATA_NAME: "STOCK_3MONTHS"
+            PROCESSED_DATA_NAME: "STOCK_3MONTHS_CHART"
         },
         {
-            DATA_API_ROUTE: "update_stock_6months",
+            DATA_API_ROUTE: "update_stock_6months_chart",
             SOURCE_DATA_NAME: "STOCK_DAILY",
-            PROCESSED_DATA_NAME: "STOCK_6MONTHS"
+            PROCESSED_DATA_NAME: "STOCK_6MONTHS_CHART"
         },
         {
-            DATA_API_ROUTE: "update_stock_ytd",
+            DATA_API_ROUTE: "update_stock_ytd_chart",
             SOURCE_DATA_NAME: "STOCK_DAILY",
-            PROCESSED_DATA_NAME: "STOCK_YTD"
+            PROCESSED_DATA_NAME: "STOCK_YTD_CHART"
         },
         {
-            DATA_API_ROUTE: "update_stock_1year",
+            DATA_API_ROUTE: "update_stock_1year_chart",
             SOURCE_DATA_NAME: "STOCK_DAILY",
-            PROCESSED_DATA_NAME: "STOCK_1YEAR"
+            PROCESSED_DATA_NAME: "STOCK_1YEAR_CHART"
         },
         {
-            DATA_API_ROUTE: "update_stock_3years",
+            DATA_API_ROUTE: "update_stock_3years_chart",
             SOURCE_DATA_NAME: "STOCK_DAILY",
-            PROCESSED_DATA_NAME: "STOCK_3YEARS"
+            PROCESSED_DATA_NAME: "STOCK_3YEARS_CHART"
         },
         {
-            DATA_API_ROUTE: "update_stock_5years",
+            DATA_API_ROUTE: "update_stock_5years_chart",
             SOURCE_DATA_NAME: "STOCK_DAILY",
-            PROCESSED_DATA_NAME: "STOCK_5YEARS"
+            PROCESSED_DATA_NAME: "STOCK_5YEARS_CHART"
         },
         {
             DATA_API_ROUTE: "update_prices_of_indexes",
@@ -212,5 +224,15 @@ class DataAPIConfig:
             DATA_API_ROUTE: "update_stock_price_target",
             SOURCE_DATA_NAME: "STOCK_PRICE_TARGET",
             PROCESSED_DATA_NAME: "STOCK_PRICE_TARGET"
+        },
+        {
+            DATA_API_ROUTE: "update_stock_price_forecast_chart",
+            SOURCE_DATA_NAME: ["STOCK_DAILY", "STOCK_PRICE_TARGET_CONSENSUS"],
+            PROCESSED_DATA_NAME: "STOCK_PRICE_FORECAST_CHART"
+        },
+        {
+            DATA_API_ROUTE: "update_stock_revenue_forecast_chart",
+            SOURCE_DATA_NAME: ["COMPANY_OUTLOOK", "STOCK_ESTIMATES_YEARLY"],
+            PROCESSED_DATA_NAME: "STOCK_REVENUE_FORECAST_CHART"
         }
     ]

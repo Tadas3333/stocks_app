@@ -3,12 +3,16 @@ from datetime import datetime
 
 class NewsProcessing:
     def get_stock_news(data:dict):
-        result = {"news_feed": []}
+        result = {}
+
+        if data is None or "stockNews" not in data or data["stockNews"] == []:
+            return result
 
         count = 0  
+        news_feed = []
 
         for news in data["stockNews"]:
-            result["news_feed"].append({
+            news_feed.append({
                 "time": datetime.strptime(news["publishedDate"], "%Y-%m-%d %H:%M:%S").strftime("%I:%M %p, %b %d") if "publishedDate" in news else None,
                 "source": news["site"] if "site" in news else None,
                 "title": news["title"] if "title" in news else None,
@@ -21,4 +25,6 @@ class NewsProcessing:
             if count == 5:
                 break
 
-        return result
+        return {
+            "news_feed": news_feed
+        }

@@ -33,49 +33,49 @@ class ClientAPIConfig:
             DATA_API_UPDATE_ROUTE: "update_cash_flow_statement"
         },
         {
-            CLIENT_API_ROUTE: "get_stock_intraday",
-            PROCESSED_DATA_NAME: "STOCK_INTRADAY",
-            DATA_API_UPDATE_ROUTE: "update_stock_intraday"
+            CLIENT_API_ROUTE: "get_stock_intraday_chart",
+            PROCESSED_DATA_NAME: "STOCK_INTRADAY_CHART",
+            DATA_API_UPDATE_ROUTE: "update_stock_intraday_chart"
         },
         {
-            CLIENT_API_ROUTE: "get_stock_5days",
-            PROCESSED_DATA_NAME: "STOCK_5DAYS",
-            DATA_API_UPDATE_ROUTE: "update_stock_5days"
+            CLIENT_API_ROUTE: "get_stock_5days_chart",
+            PROCESSED_DATA_NAME: "STOCK_5DAYS_CHART",
+            DATA_API_UPDATE_ROUTE: "update_stock_5days_chart"
         },
         {
-            CLIENT_API_ROUTE: "get_stock_1month",
-            PROCESSED_DATA_NAME: "STOCK_1MONTH",
-            DATA_API_UPDATE_ROUTE: "update_stock_1month"
+            CLIENT_API_ROUTE: "get_stock_1month_chart",
+            PROCESSED_DATA_NAME: "STOCK_1MONTH_CHART",
+            DATA_API_UPDATE_ROUTE: "update_stock_1month_chart"
         },
         {
-            CLIENT_API_ROUTE: "get_stock_3months",
-            PROCESSED_DATA_NAME: "STOCK_3MONTHS",
-            DATA_API_UPDATE_ROUTE: "update_stock_3months"
+            CLIENT_API_ROUTE: "get_stock_3months_chart",
+            PROCESSED_DATA_NAME: "STOCK_3MONTHS_CHART",
+            DATA_API_UPDATE_ROUTE: "update_stock_3months_chart"
         },
         {
-            CLIENT_API_ROUTE: "get_stock_6months",
-            PROCESSED_DATA_NAME: "STOCK_6MONTHS",
-            DATA_API_UPDATE_ROUTE: "update_stock_6months"
+            CLIENT_API_ROUTE: "get_stock_6months_chart",
+            PROCESSED_DATA_NAME: "STOCK_6MONTHS_CHART",
+            DATA_API_UPDATE_ROUTE: "update_stock_6months_chart"
         },
         {
-            CLIENT_API_ROUTE: "get_stock_1year",
-            PROCESSED_DATA_NAME: "STOCK_1YEAR",
-            DATA_API_UPDATE_ROUTE: "update_stock_1year"
+            CLIENT_API_ROUTE: "get_stock_1year_chart",
+            PROCESSED_DATA_NAME: "STOCK_1YEAR_CHART",
+            DATA_API_UPDATE_ROUTE: "update_stock_1year_chart"
         },
         {
-            CLIENT_API_ROUTE: "get_stock_ytd",
-            PROCESSED_DATA_NAME: "STOCK_YTD",
-            DATA_API_UPDATE_ROUTE: "update_stock_ytd"
+            CLIENT_API_ROUTE: "get_stock_ytd_chart",
+            PROCESSED_DATA_NAME: "STOCK_YTD_CHART",
+            DATA_API_UPDATE_ROUTE: "update_stock_ytd_chart"
         },
         {
-            CLIENT_API_ROUTE: "get_stock_3years",
-            PROCESSED_DATA_NAME: "STOCK_3YEARS",
-            DATA_API_UPDATE_ROUTE: "update_stock_3years"
+            CLIENT_API_ROUTE: "get_stock_3years_chart",
+            PROCESSED_DATA_NAME: "STOCK_3YEARS_CHART",
+            DATA_API_UPDATE_ROUTE: "update_stock_3years_chart"
         },
         {
-            CLIENT_API_ROUTE: "get_stock_5years",
-            PROCESSED_DATA_NAME: "STOCK_5YEARS",
-            DATA_API_UPDATE_ROUTE: "update_stock_5years"
+            CLIENT_API_ROUTE: "get_stock_5years_chart",
+            PROCESSED_DATA_NAME: "STOCK_5YEARS_CHART",
+            DATA_API_UPDATE_ROUTE: "update_stock_5years_chart"
         },
         {
             CLIENT_API_ROUTE: "get_prices_of_indexes",
@@ -91,5 +91,15 @@ class ClientAPIConfig:
             CLIENT_API_ROUTE: "get_stock_price_target",
             PROCESSED_DATA_NAME: "STOCK_PRICE_TARGET",
             DATA_API_UPDATE_ROUTE: "update_stock_price_target"
+        },
+        {
+            CLIENT_API_ROUTE: "get_stock_price_forecast_chart",
+            PROCESSED_DATA_NAME: "STOCK_PRICE_FORECAST_CHART",
+            DATA_API_UPDATE_ROUTE: "update_stock_price_forecast_chart"
+        },
+        {
+            CLIENT_API_ROUTE: "get_stock_revenue_forecast_chart",
+            PROCESSED_DATA_NAME: "STOCK_REVENUE_FORECAST_CHART",
+            DATA_API_UPDATE_ROUTE: "update_stock_revenue_forecast_chart"
         }
     ]

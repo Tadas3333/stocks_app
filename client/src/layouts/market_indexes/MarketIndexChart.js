@@ -17,14 +17,14 @@ export default function MarketIndexChart(props) {
             var t_data = [];
             var indx = -1;
 
-            for(var i = 0; i < data["data"].length; i++) {
+            for(var i = 0; i < data["values"].length; i++) {
                 indx += 1;
 
                 if(indx === 0) {
-                    //t_labels.push(data["data"][i]["date"]);
+                    //t_labels.push(data["values"][i]["date"]);
 
-                    if(data["data"][i]["value"]) {
-                        t_data.push(data["data"][i]["value"]);
+                    if(data["values"][i]["value"]) {
+                        t_data.push(data["values"][i]["value"]);
                     }
                 } else {
                     //Skip 8 array elements

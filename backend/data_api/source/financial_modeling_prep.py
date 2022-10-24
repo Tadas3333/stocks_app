@@ -245,3 +245,23 @@ class FinancialModelingPrep:
                             ", args: " + str(args) +
                             ", result: " + str(result))
         return result
+
+    def fetch_stock_estimates_yearly(ticker_name:str) -> dict:
+        ticker_name = FinancialModelingPrep.prepare_ticker_name(ticker_name)
+
+        args = {
+            "limit": 10
+        }
+
+        url = FinancialModelingPrep.get_url("v3/analyst-estimates/" + ticker_name, args)
+        result = FinancialModelingPrep.fetch_json(url)
+
+        # Data check
+        try:
+            test = result[0]["symbol"]
+        except Exception as e:
+            raise Exception("Data check error: stock_estimates_yearly. " +
+                            "ticker_name: " + str(ticker_name) + 
+                            ", args: " + str(args) +
+                            ", result: " + str(result))
+        return result

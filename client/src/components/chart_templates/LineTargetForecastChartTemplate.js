@@ -78,31 +78,23 @@ export default function LineTargetForecastChartTemplate(props) {
             var t_data = [];
             //var crncy = Util.getCurrencySymbol(props.currency);
 
-            for(var i = 0; i < params.historicalValues["data"].length; i++) {
-                t_labels.push(params.historicalValues["data"][i]["category"]);
+            for(var i = 0; i < params.historicalValues.length; i++) {
+                t_labels.push(params.historicalValues[i]["category"]);
 
-                if(params.historicalValues["data"][i]["value"]) {
-                  t_data.push(params.historicalValues["data"][i]["value"]);
+                if(params.historicalValues[i]["value"]) {
+                  t_data.push(params.historicalValues[i]["value"]);
                 }
             }
 
             var lastValue = t_data[t_data.length-1];
             var lowestForecastedValue = lastValue;
-            var minValue = parseFloat(params.historicalValues["minValue"]);
-            var maxValue = parseFloat(params.historicalValues["maxValue"]);
+            var minValue = parseFloat(params.minValue);
+            var maxValue = parseFloat(params.maxValue);
 
-            //Update min and max values
+            // Find lowest forecasted value
             for(var o=0; o < params.futureValues.length; o++) {
-              if(params.futureValues[o] < minValue) {
-                minValue = params.futureValues[o];
-              }
-
               if(params.futureValues[o] < lowestForecastedValue) {
                 lowestForecastedValue = params.futureValues[o];
-              }
-
-              if(params.futureValues[o] > maxValue) {
-                maxValue = params.futureValues[o];
               }
             }
 

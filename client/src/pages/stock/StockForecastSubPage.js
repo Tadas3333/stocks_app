@@ -14,7 +14,7 @@ export default function StockForecastSubPage(props) {
                     <PriceTargetChart tickerSymbol={props.tickerData.tickerSymbol}/>
                 </div>
                 <div className="col-6">
-                    <SectionTitle title="Analysts" />
+                    <SectionTitle title="Analyst" />
 
                     <PriceTargetAnalysts tickerData={props.tickerData}/>
                 </div>

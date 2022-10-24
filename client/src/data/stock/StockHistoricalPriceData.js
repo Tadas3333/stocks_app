@@ -10,23 +10,23 @@ export default function useStockHistoricalPriceData(tickerSymbol, dataType) {
             if(!Util.isNull(tickerSymbol) && !Util.isNull(dataType)) {
                 var url = "";
                 if(dataType === "1D") {
-                  url = "get_stock_intraday";
+                  url = "get_stock_intraday_chart";
                 } else if (dataType === "5D") {
-                  url = "get_stock_5days";
+                  url = "get_stock_5days_chart";
                 } else if (dataType === "1M") {
-                  url = "get_stock_1month";
+                  url = "get_stock_1month_chart";
                 } else if (dataType === "3M") {
-                  url = "get_stock_3months";
+                  url = "get_stock_3months_chart";
                 } else if (dataType === "6M") {
-                  url = "get_stock_6months";
+                  url = "get_stock_6months_chart";
                 } else if (dataType === "1Y") {
-                  url = "get_stock_1year"; 
+                  url = "get_stock_1year_chart"; 
                 } else if (dataType === "3Y") {
-                  url = "get_stock_3years";
+                  url = "get_stock_3years_chart";
                 } else if (dataType === "5Y") {
-                  url = "get_stock_5years";
+                  url = "get_stock_5years_chart";
                 } else {
-                  url = "get_stock_ytd";
+                  url = "get_stock_ytd_chart";
                 }
 
                 fetch(URL.prepareURL(url, tickerSymbol))
