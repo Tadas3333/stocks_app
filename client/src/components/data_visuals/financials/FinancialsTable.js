@@ -1,7 +1,7 @@
 import {useEffect, useState, useRef} from 'react'
 import useStockFinancialsData from 'data/stock/StockFinancialsData'
 import FinancialsTableRow from "./FinancialsTableRow"
-import BarsChartTemplate from "../chart_templates/BarsChartTemplate"
+import BarsChartTemplate from "../../chart_templates/BarsChartTemplate"
 import Util from "util/Util"
 
 export default function FinancialsTable(props) {

@@ -1,5 +1,5 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import FinancialsTable from 'components/financials/FinancialsTable';
+import FinancialsTable from 'components/data_visuals/financials/FinancialsTable';
 
 export default function StockFinancialsRoutes(props) {
 	return (

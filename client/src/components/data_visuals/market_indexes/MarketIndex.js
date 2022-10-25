@@ -1,4 +1,4 @@
-import MarketIndexChart from "layouts/market_indexes/MarketIndexChart"
+import MarketIndexChart from "components/data_visuals/market_indexes/MarketIndexChart"
 import './MarketIndex.scss'
 
 export default function MarketIndex(props) {

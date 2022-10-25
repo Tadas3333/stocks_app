@@ -9,8 +9,8 @@ export default class Colors {
     static darkRedChartColor = "186,58,71";
 
     static lightGreenChartColor = "229,244,236";
-    static greenChartColor = "63,173,107";
-    static darkGreenChartColor = "57,157,97";
+    static greenChartColor = "40,174,116";
+    static darkGreenChartColor = "38,156,105";
 
     static orangeChartColor = "225,93,45";
     static yellowChartColor = "238,191,51";

@@ -2,7 +2,7 @@
 import SectionTitle from "components/structure/SectionTitle"
 import DataCol from "components/structure/DataCol"
 import DataRow from "components/structure/DataRow"
-import NewsContainer from "components/news/NewsContainer"
+import NewsContainer from "components/data_visuals/news/NewsContainer"
 import Util from "util/Util"
 
 export default function StockSummarySubPage(props) {
