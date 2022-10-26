@@ -1,27 +1,19 @@
-import {useEffect, useRef} from 'react'
+import {useState} from 'react'
 import Util from 'util/Util'
 
 export default function Image(props) {
-    const imgClass = useRef("image d-none");
+	const [imageSource, setImageSource] = useState(props.src);
 
-	useEffect(() => {
-		try {
-			if(!Util.isNull(props.src)) {
-				imgClass.current = "image";
-			} else {
-				imgClass.current = "image d-none";
-			}
-		} catch(err) {
-			console.log(err);
-		}
-    }, [props.src]);
+	const handleError = () => 
+	  setImageSource("");
 
 	return (
 		<div style={{width: props.width, 
 					height: props.height}}>
 			<img src={props.src} 
 				alt={props.alt} 
-				className={imgClass.current}
+				className={(Util.isNull(imageSource)) ? "d-none" : ""}
+				onError={handleError}
 				style={{width: "100%", 
 						height: "100%", 
 						borderRadius: props.borderRadius}}></img>

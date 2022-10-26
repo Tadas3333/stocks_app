@@ -6,6 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
+
 //StrictMode mode to find potential issues (causes double rendering)
 root.render(
   <React.StrictMode>
