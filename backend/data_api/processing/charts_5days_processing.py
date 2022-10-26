@@ -19,7 +19,7 @@ class Charts5DaysProcessing:
             result = result + [{
                 "category": ChartsIntradayProcessing.format_date(datetime.strptime(d["date"], '%Y-%m-%d %H:%M:%S')),
                 "value": "{0:.4f}".format(float(d["close"])),
-                "volume": str(d["volume"])
+                "volume": str(float(d["volume"])) if "volume" in d else "0"
             }]
         
         # Prepare the lastest market open day chart and join two charts

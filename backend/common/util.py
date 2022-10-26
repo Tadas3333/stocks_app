@@ -1,3 +1,4 @@
+from decimal import Decimal
 
 class Util:
 	def get_percentage_change(new_price:float, old_price:float)->float:
@@ -48,16 +49,20 @@ class Util:
 		
 		return None
 
+	# Round using Decimal library
+	# Float round 222.415 returns 222.41 (sometimes)
+	# Decimal round 222.415 returns 222.42
+	def d_round(value, digits=0)->float:
+		return float(round(Decimal(str(value)), digits))
+
     #0.7899434381 -> 0.79
 	def two_decimal_float(value:str)->str:
 		if value is not None:
-			value = round(float(value), 2)
-			return "{:.2f}".format(value)
+			return "{:.2f}".format(Util.d_round(value,2))
 		return ""
 	
 	#0.7876504381 -> 0.7877
 	def four_decimal_float(value:str)->str:
 		if value is not None:
-			value = round(float(value), 4)
-			return "{:.4f}".format(value)
+			return "{:.4f}".format(Util.d_round(value,4))
 		return ""

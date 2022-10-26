@@ -5,6 +5,7 @@ export default function Table(props) {
 
     const scrollableTable = {
         overflowY: 'auto',
+        overflowX: 'hidden',
         maxHeight: props.maxHeight
       };
 

@@ -56,7 +56,7 @@ class ChartsIntradayProcessing:
                 current_price = last_price
             else:
                 current_price = price_data["close"]
-                current_volume = price_data["volume"]
+                current_volume = float(price_data["volume"]) if "volume" in price_data else 0.0
             
             last_price = current_price
             

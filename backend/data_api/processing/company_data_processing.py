@@ -8,10 +8,21 @@ class CompanyDataProcessing:
         key_metrics = key_metrics[0]
         stock_daily = stock_daily["historical"]
 
+        result["exchange"] = outlook_data["profile"]["exchangeShortName"] if "profile" in outlook_data and "exchangeShortName" in outlook_data["profile"] else None
+        
+        if result["exchange"] is None:
+            raise Exception("No exchange was found")
+        
+        result["symbolNoExchange"]  = outlook_data["profile"]["symbol"] if "profile" in outlook_data and "symbol" in outlook_data["profile"] else None
+
+        if result["symbolNoExchange"] is None:
+            raise Exception("No symbol was found")
+
+        result["symbol"] = result["exchange"] + "-" + result["symbolNoExchange"]
+
         result["currency"] = outlook_data["profile"]["currency"] if "profile" in outlook_data and "currency" in outlook_data["profile"] else None
         result["sector"]  = outlook_data["profile"]["sector"] if "profile" in outlook_data and "sector" in outlook_data["profile"] else None
         result["industry"] = outlook_data["profile"]["industry"] if "profile" in outlook_data and "industry" in outlook_data["profile"] else None
-        result["exchange"] = outlook_data["profile"]["exchangeShortName"] if "profile" in outlook_data and "exchangeShortName" in outlook_data["profile"] else None
         result["companyDescription"] = outlook_data["profile"]["description"] if "profile" in outlook_data and "description" in outlook_data["profile"] else None
         result["name"] = outlook_data["profile"]["companyName"] if "profile" in outlook_data and "companyName" in outlook_data["profile"] else None
         result["image"] = outlook_data["profile"]["image"] if "profile" in outlook_data and "image" in outlook_data["profile"] else None

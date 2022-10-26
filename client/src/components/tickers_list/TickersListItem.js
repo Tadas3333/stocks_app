@@ -25,7 +25,7 @@ export default function TickersListItem(props) {
           !Util.isNull(overviewData.priceChangePercentage) &&
           !Util.isNull(overviewData.currency))
             ?
-                <tr className="font-size-14 font-weight-500 section-border-bottom-l">
+                <tr className="section-border-bottom-l">
                     <td className="align-middle py-2">
                         <div className="d-flex align-items-center">
                             <img src={Util.nvl(overviewData.image, "")}

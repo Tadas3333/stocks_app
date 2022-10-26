@@ -98,12 +98,6 @@ export default class Util {
 		else return 0;
     }
 
-    static prepareTickerSymbol(exchange, symbol) {
-        exchange = Util.nvl(exchange, "");
-        symbol = Util.nvl(symbol, "");
-        return exchange + "-" + symbol;
-    }
-
     static removeExchange(symbol) {
         if(Util.isNull(symbol)) {
             return symbol;

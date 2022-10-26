@@ -10,10 +10,10 @@ class ForecastProcessing:
             return result
 
         return {
-            "targetHigh": round(float(data[0]["targetHigh"])),
-            "targetLow": round(float(data[0]["targetLow"])),
-            "targetConsensus": round(float(data[0]["targetConsensus"])),
-            "targetMedian": round(float(data[0]["targetMedian"]))
+            "targetHigh": Util.d_round(data[0]["targetHigh"]),
+            "targetLow": Util.d_round(data[0]["targetLow"]),
+            "targetConsensus": Util.d_round(data[0]["targetConsensus"]),
+            "targetMedian": Util.d_round(data[0]["targetMedian"])
         }
 
     def get_stock_price_target(data:dict):
@@ -26,7 +26,7 @@ class ForecastProcessing:
             result.append({
                 "analystName": target["analystName"],
                 "analystCompany": target["analystCompany"],
-                "priceTarget": round(float(target["adjPriceTarget"])),
+                "priceTarget": Util.d_round(target["adjPriceTarget"]),
                 "date": target["publishedDate"][0:10]
             })
         

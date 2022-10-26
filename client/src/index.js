@@ -5,6 +5,8 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
+//StrictMode mode to find potential issues (causes double rendering)
 root.render(
   <React.StrictMode>
 	<BrowserRouter>
@@ -12,6 +14,13 @@ root.render(
 	</BrowserRouter>
   </React.StrictMode>
 );
+
+/*
+root.render(
+	<BrowserRouter>
+		<App />
+	</BrowserRouter>
+  );  */
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

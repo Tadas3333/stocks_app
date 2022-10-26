@@ -58,7 +58,7 @@ class ChartsDailyProcessing:
             result = result + [{
                 "category": ChartsDailyProcessing.format_date(datetime.strptime(day["date"], '%Y-%m-%d')),
                 "value": "{0:.4f}".format(float(price)),
-                "volume": str(float(day["volume"]))
+                "volume": str(float(day["volume"])) if "volume" in day else "0"
             }]
 
         if minValue is None:

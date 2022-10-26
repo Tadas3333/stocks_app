@@ -1,8 +1,8 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import StockSummarySubPage from 'pages/stock/StockSummarySubPage';
-import StockAnalysisSubPage from 'pages/stock/StockAnalysisSubPage';
-import StockForecastSubPage from 'pages/stock/StockForecastSubPage';
-import StockFinancialsSubPage from 'pages/stock/StockFinancialsSubPage';
+import StockSummarySubPage from 'pages/market/stock/StockSummarySubPage';
+import StockAnalysisSubPage from 'pages/market/stock/StockAnalysisSubPage';
+import StockForecastSubPage from 'pages/market/stock/StockForecastSubPage';
+import StockFinancialsSubPage from 'pages/market/stock/StockFinancialsSubPage';
 
 export default function StockRoutes(props) {
 	return (

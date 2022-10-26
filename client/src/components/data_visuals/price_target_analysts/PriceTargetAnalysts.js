@@ -12,7 +12,7 @@ export default function PriceTargetAnalysts(props) {
 
     useEffect(() => {
         try {
-            if(!Util.isNull(priceData) && !Util.isNull(props.tickerData.tickerSymbol)) {
+            if(!Util.isNull(priceData) && props.tickerData.tickerIsLoaded) {
                 var rows = [];
 
                 for(var i=0; i < priceData.length; i++) {

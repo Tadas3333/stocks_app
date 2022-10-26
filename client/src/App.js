@@ -1,3 +1,4 @@
+import MainLayout from 'layouts/main/MainLayout';
 import MainRoutes from 'routes/MainRoutes';
 
 import "assets/styles/Main.scss"
@@ -8,7 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 export default function App() {
 	return (
 		<div className="app-body">
-			<MainRoutes />
+			<MainLayout body={<MainRoutes />}/>
 		</div>
 	);
 }
