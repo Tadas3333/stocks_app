@@ -70,7 +70,7 @@ export default function PriceTargetAnalysts(props) {
 
 	return (
             <Table 
-            maxHeight="260px"
+            height="260px"
             headerColumns={
                 [{content: <>Name / Company</>}, 
                  {content: <>Price Target</>}, 

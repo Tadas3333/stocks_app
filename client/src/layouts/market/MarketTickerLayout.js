@@ -6,7 +6,7 @@ export default function MarketTickerLayout(props) {
 			<div className="container">
 				<div className="row">
 					<div className="col-9">
-						<div className="row py-3 section-border-bottom">
+						<div className="row">
 							<div className="col">
 								{props.tickerName}
 							</div>

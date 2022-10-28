@@ -1,5 +1,40 @@
 @import "assets/styles/Colors.scss";
 
-.tickers-list-table-head {
-    box-shadow: inset 0 -1px 0 $grey-150-color;
+.tickers-list-header {
+    height: 70px;
 }
+
+.tickers-list-header-title {
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+
+.tickers-list-table {
+    tbody{
+        display: block;
+        overflow: overlay;
+    }
+
+    thead, tbody tr {
+        display: table;
+        width: 100%;
+        table-layout:fixed;
+    }
+}
+
+.tickers-list-symbol-td {
+    width: 30%;
+}
+
+.tickers-list-price-td {
+    width: 25%;
+}
+
+.tickers-list-chg-td {
+    width: 20%;
+}
+
+.tickers-list-chgp-td {
+    width: 25%;
+}
+

@@ -26,7 +26,7 @@ export default function TickersListItem(props) {
           !Util.isNull(overviewData.currency))
             ?
                 <tr className="section-border-bottom-l">
-                    <td className="align-middle py-2">
+                    <td className="align-middle py-2 ps-3 tickers-list-symbol-td">
                         <div className="d-flex align-items-center">
                             <img src={Util.nvl(overviewData.image, "")}
                                  alt="" 
@@ -34,14 +34,14 @@ export default function TickersListItem(props) {
                             <span className="ps-2">{Util.removeExchange(props.tickerSymbol)}</span>
                         </div>
                     </td>
-                    <td className="align-middle text-end py-2">
+                    <td className="align-middle text-end py-2 tickers-list-price-td">
                         {Util.getCurrencySymbol(overviewData.currency)}{overviewData.price}
                     </td>
-                    <td className={"align-middle text-end py-2 " + 
+                    <td className={"align-middle text-end py-2 tickers-list-chg-td " + 
                                    (overviewData.priceChange >= 0 ? "color-positive" : "color-negative")}>
                         {(overviewData.priceChange >= 0) ? "+" : ""}{overviewData.priceChange}
                     </td>
-                    <td className={"align-middle text-end py-2 " + 
+                    <td className={"align-middle text-end py-2 pe-3 tickers-list-chgp-td " + 
                                    (overviewData.priceChangePercentage >= 0 ? "color-positive" : "color-negative")}>
                         {(overviewData.priceChangePercentage >= 0) ? "+" : ""}{overviewData.priceChangePercentage}%
                     </td>

@@ -37,7 +37,7 @@ class ChartsDailyProcessing:
                 else:
                     loadUntil = currentDay
 
-            price = day["close"]
+            price = day["open"]
             lastClosePrice = price
 
             if loadUntil >= currentDay:

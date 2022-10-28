@@ -6,11 +6,11 @@ export default function Table(props) {
     const scrollableTable = {
         overflowY: 'auto',
         overflowX: 'hidden',
-        maxHeight: props.maxHeight
+        height: props.height
       };
 
 	return (
-        <div style={(!Util.isNull(props.maxHeight) ? scrollableTable : {})}>
+        <div style={(!Util.isNull(props.height) ? scrollableTable : {})}>
             <table className="table-comp font-size-14">
                 <thead className="sticky-top">
                     <tr>

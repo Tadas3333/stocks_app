@@ -13,10 +13,8 @@ export default function Watchlist(props) {
                          "NASDAQ-PYPL"]
 	return (
         <>
-            <div className="watch-list-selection py-3 font-weight-600">
-                Recently Viewed
-            </div>
-            <TickersList tickerSymbols={tickerSymbols} maxHeight="340px"/>
+            <TickersList tickerSymbols={tickerSymbols} 
+                         listHeight="360px"/>
         </>
         );
 }

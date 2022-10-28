@@ -1,0 +1,31 @@
+@import "assets/styles/Colors.scss";
+
+.custom-scrollbar {
+    //For firefox
+    overflow: auto;
+    scrollbar-color: $grey-450-color $grey-200-color;
+    scrollbar-width: none;
+
+    //Webkit browsers
+    overflow: overlay;
+}
+
+.custom-scrollbar:hover {
+    //Firefox
+    scrollbar-width: auto;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+    //Webkit browsers
+    background: transparent;
+    width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    //Webkit browsers
+    border-radius: 7px;
+}
+
+.custom-scrollbar:hover::-webkit-scrollbar-thumb {
+    background: $grey-450-color;
+}

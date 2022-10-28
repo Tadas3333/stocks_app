@@ -114,7 +114,7 @@ class CompanyDataProcessing:
 
         for item in data:
             item_day = item["date"].split(' ')[0]
-            result["lastClose"] = item["close"]
+            result["lastClose"] = item["open"]
 
             if latest_day is None:
                 latest_day = item_day
@@ -159,7 +159,7 @@ class CompanyDataProcessing:
 
         for item in data:
             item_day = datetime.strptime(item["date"], '%Y-%m-%d')
-            result["lastClose"] = item["close"]
+            result["lastClose"] = item["open"]
 
             if loadUntil is None:
                 loadUntil = item_day - relativedelta(weeks=52)

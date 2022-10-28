@@ -18,7 +18,7 @@ class Charts5DaysProcessing:
         for d in other_days_data:
             result = result + [{
                 "category": ChartsIntradayProcessing.format_date(datetime.strptime(d["date"], '%Y-%m-%d %H:%M:%S')),
-                "value": "{0:.4f}".format(float(d["close"])),
+                "value": "{0:.4f}".format(float(d["open"])),
                 "volume": str(float(d["volume"])) if "volume" in d else "0"
             }]
         
@@ -49,7 +49,7 @@ class Charts5DaysProcessing:
 
         for item in data:
             item_day = item["date"].split(' ')[0]
-            result["lastClose"] = item["close"]
+            result["lastClose"] = item["open"]
 
             # When the first item is read
             if latest_day is None:
@@ -72,14 +72,14 @@ class Charts5DaysProcessing:
                 result["otherDaysData"].append(item)
             
             if result["minValue"] is None:
-                result["minValue"] = item["close"]
-            elif result["minValue"] > item["close"]:
-                result["minValue"]  = item["close"]
+                result["minValue"] = item["open"]
+            elif result["minValue"] > item["open"]:
+                result["minValue"]  = item["open"]
             
             if result["maxValue"] is None:
-                result["maxValue"] = item["close"]
-            elif result["maxValue"] < item["close"]:
-                result["maxValue"]  = item["close"]
+                result["maxValue"] = item["open"]
+            elif result["maxValue"] < item["open"]:
+                result["maxValue"]  = item["open"]
         
         if result["minValue"] is None:
             result["minValue"] = 0.0

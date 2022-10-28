@@ -55,7 +55,7 @@ class ChartsIntradayProcessing:
             if price_data is None:
                 current_price = last_price
             else:
-                current_price = price_data["close"]
+                current_price = price_data["open"]
                 current_volume = float(price_data["volume"]) if "volume" in price_data else 0.0
             
             last_price = current_price
@@ -109,7 +109,7 @@ class ChartsIntradayProcessing:
 
         for item in data:
             item_day = item["date"].split(' ')[0]
-            result["lastClose"] = item["close"]
+            result["lastClose"] = item["open"]
 
             if latest_day is None:
                 latest_day = item_day
@@ -119,14 +119,14 @@ class ChartsIntradayProcessing:
                    break
             
             if result["minValue"] is None:
-                result["minValue"] = item["close"]
-            elif result["minValue"] > item["close"]:
-                result["minValue"]  = item["close"]
+                result["minValue"] = item["open"]
+            elif result["minValue"] > item["open"]:
+                result["minValue"]  = item["open"]
             
             if result["maxValue"] is None:
-                result["maxValue"] = item["close"]
-            elif result["maxValue"] < item["close"]:
-                result["maxValue"]  = item["close"]
+                result["maxValue"] = item["open"]
+            elif result["maxValue"] < item["open"]:
+                result["maxValue"]  = item["open"]
         
         if result["minValue"] is None:
             result["minValue"] = 0.0

@@ -51,10 +51,11 @@ class Time:
         
         close_time_today = datetime.strptime(ny_time.strftime("%Y-%m-%d") + " " + close_hour + ":" + close_min + ":00", '%Y-%m-%d %H:%M:%S')
         close_time_today = close_time_today.replace(tzinfo=ny_timezone)
-        
-        if ny_time >= open_time_today and ny_time <= close_time_today:
+
+        current_time = datetime.strptime(ny_time.strftime("%Y-%m-%d %H:%M:%S"), '%Y-%m-%d %H:%M:%S')
+        current_time = close_time_today.replace(tzinfo=ny_timezone)
+
+        if current_time >= open_time_today and current_time <= close_time_today:
             return True
         else:
             return False
-
-        
