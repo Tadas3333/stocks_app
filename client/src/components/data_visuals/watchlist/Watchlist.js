@@ -9,7 +9,7 @@ export default function Watchlist(props) {
                          "NASDAQ-NFLX",
                          "NASDAQ-AMZN",
                          "NASDAQ-META",
-                         "NYSE-SQ",
+                         "NASDAQ-RUM",
                          "NASDAQ-PYPL"]
 	return (
         <>

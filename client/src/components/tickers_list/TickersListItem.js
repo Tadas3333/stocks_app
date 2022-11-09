@@ -1,20 +1,10 @@
-import {useEffect, useRef} from 'react'
 import useStockOverviewData from 'data/stock/StockOverviewData'
+import Image from 'components/images/image/Image'
+import DefaultTickerImage from 'components/images/default_ticker_image/DefaultTickerImage'
 import Util from 'util/Util';
-
-import './TickersListItem.scss';
 
 export default function TickersListItem(props) {
     const overviewData = useStockOverviewData(props.tickerSymbol);
-    const imgClass = useRef("ticker-list-item-image d-none");
-
-    useEffect(() => {
-        if(!Util.isNull(overviewData) && !Util.isNull(overviewData.image)) {
-            imgClass.current = "ticker-list-item-image";
-        } else {
-            imgClass.current = "ticker-list-item-image d-none";
-        }
-    }, [overviewData]);
 
     return (
         <>
@@ -28,9 +18,21 @@ export default function TickersListItem(props) {
                 <tr className="section-border-bottom-l">
                     <td className="align-middle py-2 ps-3 tickers-list-symbol-td">
                         <div className="d-flex align-items-center">
-                            <img src={Util.nvl(overviewData.image, "")}
-                                 alt="" 
-                                 className={imgClass.current}></img>
+                            <Image src={overviewData.image}
+                                   classes="border-radius-7"
+                                   width="20px"
+                                   maxHeight="20px"
+                                   
+                                   replaceInvalidWith={
+                                     <DefaultTickerImage 
+                                        width="20px" 
+                                        height="20px"
+                                        tickerSymbol={
+                                            Util.removeExchange(props.tickerSymbol).substring(0, 1)
+                                        }
+                                        />
+                                   }
+                                   />
                             <span className="ps-2">{Util.removeExchange(props.tickerSymbol)}</span>
                         </div>
                     </td>
